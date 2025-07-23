@@ -2,15 +2,17 @@ import React from 'react'
 import './App.css'
 import { SideBar, TopBar } from './components'
 import { Upcoming, Today, Logout, Dashboard, Tasks, Completed } from './routes'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 
 function App() {
+  const location = useLocation()
+  const hideLayout = location.pathname === '/logout'
 
   return (
     <>
-      <TopBar />
+      { !hideLayout && <TopBar /> }
       <main>
-        <SideBar />
+        { !hideLayout && <SideBar /> }
         <Routes>
           <Route path="/" element={ <Dashboard /> } />
           <Route path="/tasks" element={ <Tasks /> } />

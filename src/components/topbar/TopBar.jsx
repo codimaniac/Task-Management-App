@@ -1,6 +1,6 @@
 import React from 'react'
 import './topbar.css'
-import { FaSearch } from 'react-icons/fa'
+import { FaSearch, FaRegBell } from 'react-icons/fa'
 
 const TopBar = () => {
   return (
@@ -14,7 +14,7 @@ const TopBar = () => {
           <span className='search-icon'><FaSearch color='white'/></span>
         </div>
         <div className="notifications">
-          <span className="notification-icon">🔔</span>
+          <FaRegBell className='notification-icon' />
           <span className="notification-count">3</span>
         </div>
       </div>

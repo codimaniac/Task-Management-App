@@ -1,9 +1,11 @@
 .sidebar {
+    position: relative;
     height: 100%;
     width: 250px;
     background-color: var(--secondary-color);
     color: var(--light-color);
-    border-top-right-radius: 10px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
     padding: 1rem;
     /* margin-top: 10vh; */
 }
@@ -28,7 +30,7 @@
     height: 86px;
     border: 1.5px solid var(--light-color);
     position: absolute;
-    top: 86px;
+    top: -43px;
     border-radius: 50%;
 }
 
