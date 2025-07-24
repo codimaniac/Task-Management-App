@@ -1,9 +1,9 @@
 import React from 'react'
 import './dashboard.css'
-import { MdCheckCircleOutline, MdPersonAdd, MdToday } from 'react-icons/md';
+import { MdCheckCircleOutline, MdPersonAdd } from 'react-icons/md';
 import { AiOutlinePieChart } from 'react-icons/ai';
-import { FaPlus } from 'react-icons/fa';
 import TaskMinimized from '../../components/task-minimized/TaskMinimized';
+import TaskList from '../../components/task-list/TaskList';
 
 const Dashboard = () => {
   return (
@@ -13,20 +13,7 @@ const Dashboard = () => {
         <div className="invite-btn"><MdPersonAdd /> Invite</div>
       </div>
       <div className="dashboard-content">
-        <div className="to-do-list">
-          <span className="to-do-list-header">
-            <div className="to-do-list-header-title">
-              <MdToday className='dashboard-header-icons' />
-              To-Do List
-            </div>
-            <div className="add-task">
-              <FaPlus className='add-task-icon' />
-              <span className='add-task-text'>Add Task</span>
-            </div>
-          </span>
-          <TaskMinimized />
-          <TaskMinimized />
-        </div>
+        <TaskList />
         <div className="task-status">
           <div className="task-status-graph">
             <span className="to-do-list-header">

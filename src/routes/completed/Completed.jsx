@@ -1,9 +1,10 @@
 import React from 'react'
 import './completed.css'
+import TaskList from '../../components/task-list/TaskList'
 
 const Completed = () => {
   return (
-    <div>Completed</div>
+    <TaskList />
   )
 }
 

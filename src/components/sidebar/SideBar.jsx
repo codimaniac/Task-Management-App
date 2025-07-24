@@ -1,8 +1,9 @@
 import React from 'react'
 import './sidebar.css'
 import profilePic from '../../assets/Oscar Piastri Side Profile.jpeg'
-import { MdDashboard, MdLogout, MdOutlineChecklist, MdOutlineDone, MdOutlineUpcoming, MdToday } from 'react-icons/md'
+import { MdDashboard, MdLogout, MdOutlineChecklist, MdOutlineDone, MdOutlineUpcoming } from 'react-icons/md'
 import { Link, useLocation } from 'react-router-dom'
+import { HiMiniShieldExclamation } from 'react-icons/hi2'
 
 const SideBar = () => {
     const location = useLocation()
@@ -19,7 +20,7 @@ const SideBar = () => {
                 <nav className="sidebar-nav">
                     <Link to="/" ><div className={`nav-item ${ pathname === '/' ? 'active' : '' }`}><MdDashboard size={24} /> Dashboard</div></Link>
                     <Link to="/tasks" ><div className={`nav-item ${ pathname === '/tasks' ? 'active' : '' }`}><MdOutlineChecklist size={24} /> Tasks</div></Link>
-                    <Link to="/today" ><div className={`nav-item ${ pathname === '/today' ? 'active' : '' }`}><MdToday size={24} /> Today</div></Link>
+                    <Link to="/vital" ><div className={`nav-item ${ pathname === '/vital' ? 'active' : '' }`}><HiMiniShieldExclamation size={24} /> Vital</div></Link>
                     <Link to="/upcoming" ><div className={`nav-item ${ pathname === '/upcoming' ? 'active' : '' }`}><MdOutlineUpcoming size={24} /> Upcoming</div></Link>
                     <Link to="/completed" ><div className={`nav-item ${ pathname === '/completed' ? 'active' : '' }`}><MdOutlineDone size={24} /> Completed</div></Link>
                 </nav>

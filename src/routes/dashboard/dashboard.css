@@ -47,29 +47,12 @@
     gap: 1rem;
     overflow-y: auto;
     scrollbar-width: none;
-    border: 1px solid var(--gray-light-color);
+    border: 1px solid var(--gray-lighter-color);
 }
 
 .dashboard-header-icons {
     color: var(--gray-color);
     font-size: 24px;
-}
-
-.to-do-list {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 1rem;
-    min-height: fit-content;
-    padding: 1rem;
-    height: 100%;
-    border-radius: 14px;
-    box-shadow:
-        0 2px 8px 0 rgba(0, 0, 0, 0.07), /* bottom */
-        0 -2px 8px 0 rgba(0, 0, 0, 0.07), /* top */
-        2px 0 8px 0 rgba(0, 0, 0, 0.07), /* right */
-        -2px 0 8px 0 rgba(0, 0, 0, 0.07); /* left */
-
 }
 
 .to-do-list-header {
@@ -79,27 +62,6 @@
     color: var(--primary-color);
     background-color: var(--light-color);
     border-radius: 14px 14px 0 0;
-}
-
-.to-do-list-header-title, .add-task {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.add-task-icon {
-    color: var(--primary-color);
-}
-
-.add-task {
-    cursor: pointer;
-    color: var(--gray-color);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 4px 12px;
-    margin-left: auto;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .task-status {
