@@ -25,7 +25,7 @@ const SideBar = () => {
                     <Link to="/completed" ><div className={`nav-item ${ pathname === '/completed' ? 'active' : '' }`}><MdOutlineDone size={24} /> Completed</div></Link>
                 </nav>
                 <div className="sidebar-footer">
-                    <Link to="/logout" ><div className="nav-item"><MdLogout size={24} /> Logout</div></Link>
+                    <Link to="/login" ><div className="nav-item"><MdLogout size={24} /> Logout</div></Link>
                 </div>
             </div>
         </aside>

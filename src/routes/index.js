@@ -1,6 +1,7 @@
 export { default as Upcoming } from './upcoming/Upcoming'
 export { default as Vital } from './vital/Vital'
-export { default as Logout } from './logout/Logout'
+export { default as Login } from './login/Login'
 export { default as Tasks } from './tasks/Tasks'
 export { default as Dashboard } from './dashboard/Dashboard'
 export { default as Completed } from './completed/Completed'
+export { default as SignUp } from './signup/SignUp'

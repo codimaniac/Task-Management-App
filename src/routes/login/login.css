@@ -1,0 +1,147 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    min-height: 100vh;
+    font-weight: 300;
+    background-color: var(--light-color);
+    color: var(--primary-color);
+}
+
+
+
+.login-container {
+    display: flex;
+    height: auto;
+    border-radius: 14px;
+    box-shadow:
+        0 2px 8px 0 rgba(0, 0, 0, 0.07), /* bottom */
+        0 -2px 8px 0 rgba(0, 0, 0, 0.07), /* top */
+        2px 0 8px 0 rgba(0, 0, 0, 0.07), /* right */
+        -2px 0 8px 0 rgba(0, 0, 0, 0.07); /* left */
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 2rem;
+    border-radius: 14px 0 0 14px;
+}
+
+.login-form > h1, .login-form > p {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.login-form > p {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.login-form input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 0.7rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    transition: width 0.3s ease;
+}
+
+.login-form input::placeholder {
+  color: var(--gray-color);
+}
+
+.login-form input:hover {
+    background-color: var(--gray-light-color);
+}
+
+.login-form input:focus {
+    outline: none;
+}
+
+.login-form label {
+    font-size: 0.7rem;
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.password-container > a {
+    font-size: 0.7rem;
+    color: var(--light-color);
+}
+
+.password-container > a:hover {
+    text-decoration: underline;
+}
+
+label[for="stay_signed_in"] {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#stay_signed_in {
+    display: inline-block;
+    width: auto;
+}
+
+.call-to-sign-up {
+    font-size: 0.7rem;
+}
+
+.call-to-sign-up a {
+    color: var(--light-color);
+    text-decoration: underline;
+}
+
+.login-image {
+    flex: 1;
+    padding: 2rem;
+}
+
+.login-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.terms-and-conditions {
+    font-size: 0.7rem;
+}
+
+.terms-and-conditions a {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .login {
+        padding: 0 1.5rem;
+    }
+    .login-container {
+        width: 100%;
+    }
+    .login-form {
+        border-radius: 14px;
+        padding: 1.5rem;
+    }
+    .login-image {
+        display: none;
+    }
+    .terms-and-conditions {
+        text-align: center;
+        margin: 0 3.5rem;
+    }
+}

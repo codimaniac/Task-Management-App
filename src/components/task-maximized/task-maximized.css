@@ -57,3 +57,16 @@
     line-height: 2;
     color: var(--gray-color);
 }
+
+.task-detailed-description p {
+    margin: 0;
+}  
+
+.task-detailed-description b {
+    color: var(--primary-color);
+}
+
+.task-detailed-description li {
+    margin-bottom: 0.5rem;
+    list-style-type: circle;
+}

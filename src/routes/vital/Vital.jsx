@@ -5,9 +5,9 @@ import TaskMaximized from '../../components/task-maximized/TaskMaximized'
 
 const Vital = () => {
   return (
-    <div className="vital-container">
-      <h1>Vital's Tasks</h1>
-      <div className="dashboard-content">
+    <div className="container">
+      <h1>Vital Tasks</h1>
+      <div className="content">
         <TaskList />
         <TaskMaximized />
       </div>

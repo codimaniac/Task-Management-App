@@ -1,10 +1,16 @@
 import React from 'react'
 import './upcoming.css'
-import TaskList from '../../components/task-list/TaskList'
+import { TaskList, TaskMaximized } from '../../components'
 
 const Upcoming = () => {
   return (
-    <TaskList />
+    <div className="container">
+      <h1>Upcoming Task</h1>
+      <div className="content">
+        <TaskList />
+        <TaskMaximized />
+      </div>
+    </div>
   )
 }
 
