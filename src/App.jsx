@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css'
 import { SideBar, TopBar } from './components'
 import { Upcoming, Vital, Login, Dashboard, Tasks, Completed, SignUp } from './routes'
 import { Routes, Route, useLocation } from 'react-router-dom'

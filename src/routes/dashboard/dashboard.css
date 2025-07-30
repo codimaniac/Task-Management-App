@@ -80,3 +80,17 @@
     gap: 1rem;
     padding: 1rem;
 }
+
+@media (max-width: 768px) {
+    .dashboard-welcome {
+        padding: 1rem 1rem 0;
+    }
+
+    .welcome-msg {
+        font-size: 1.2rem;
+    }
+
+    .task-status {
+        order: -1;
+    }
+}

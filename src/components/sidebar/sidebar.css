@@ -1,14 +1,13 @@
 .sidebar {
-    position: relative;
-    height: 100%;
+    position: sticky;
+    top: 20vh;
+    height: 80vh;
     width: 250px;
     font-size: 0.8rem;
     background-color: var(--secondary-color);
     color: var(--light-color);
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-top-right-radius: 14px;
     padding: 1rem;
-    /* margin-top: 10vh; */
 }
 
 .sidebar-container {
@@ -27,11 +26,11 @@
 }
 
 .account-pfp {
+    position: absolute;
+    top: -43px;
     width: 86px;
     height: 86px;
     border: 1.5px solid var(--light-color);
-    position: absolute;
-    top: -43px;
     border-radius: 50%;
 }
 
@@ -77,4 +76,11 @@
 
 .sidebar-footer {
     margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+        
+    }
 }
