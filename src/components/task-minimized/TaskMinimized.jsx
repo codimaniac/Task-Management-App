@@ -1,6 +1,6 @@
 import React from 'react'
 import './task-minimized.css'
-import BirthdayPics from '../../assets/birthday.jpg'
+import BirthdayPics from '../../assets/Birthday.jpg'
 import HollowMoreHoriz from '../more-hollow-horiz/HollowMoreHoriz'
 
 const TaskMinimized = () => {
