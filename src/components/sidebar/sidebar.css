@@ -84,7 +84,7 @@
         left: -100%;
         top: auto;
         width: 75vw;
-        height: -webkit-fill-available;
+        height: calc(100vh - 4rem);
         transition: all 1s ease;
     }
 
