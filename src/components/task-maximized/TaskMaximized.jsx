@@ -1,6 +1,6 @@
 import React from 'react'
 import './task-maximized.css'
-import BirthdayPics from '../../assets/birthday.jpg'
+import BirthdayPics from '../../assets/Birthday.jpg'
 
 const TaskMaximized = () => {
   return (
