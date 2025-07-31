@@ -144,6 +144,7 @@ label[for="agree_to_term"] {
 
 @media (max-width: 768px) {
     .signup {
+        position: absolute;
         padding: 0 1.5rem;
     }
     .signup-container {

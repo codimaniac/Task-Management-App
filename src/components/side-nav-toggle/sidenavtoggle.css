@@ -1,0 +1,15 @@
+.hamburger {
+    display: none;
+    height: fit-content;
+    line-height: 0;
+}
+
+.md-close, .md-menu {
+    font-size: 24px;
+}
+
+@media (max-width: 786px) {
+    .hamburger {
+        display: block;
+    }
+}

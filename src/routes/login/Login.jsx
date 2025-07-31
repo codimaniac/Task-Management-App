@@ -3,10 +3,12 @@ import "./login.css";
 import TaskBrief from "../../assets/task-brief.svg";
 import Calendar from "../../assets/calendar.svg";
 import { Link } from "react-router-dom";
+import { PreviousPage } from "../../components";
 
 const Login = () => {
   return (
     <div className="login">
+      <PreviousPage />
       <div className="login-container">
         <div className="login-form">
           <h1>Login</h1>

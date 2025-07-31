@@ -1,0 +1,18 @@
+.previous-page {
+    display: none;
+}
+
+.md-arrow-left {
+    font-size: 24px;
+}
+
+@media (max-width: 768px) {
+    .previous-page {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        align-self: flex-start;
+        position: absolute;
+        top: 1.5rem;
+    }
+}

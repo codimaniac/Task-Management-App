@@ -129,6 +129,7 @@ label[for="stay_signed_in"] {
 
 @media (max-width: 768px) {
     .login {
+        position: absolute;
         padding: 0 1.5rem;
     }
     .login-container {

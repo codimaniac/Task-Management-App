@@ -1,11 +1,13 @@
 import React from 'react'
 import './topbar.css'
+import SideNavToggle from '../side-nav-toggle/SideNavToggle'
 import { FaSearch, FaRegBell } from 'react-icons/fa'
 
-const TopBar = () => {
+const TopBar = ({isOpen, toggleSideNav}) => {
   return (
     <nav className='topbar'>
       <div className="topbar-container">
+        <SideNavToggle isOpen={ isOpen } toggleSideNav={ toggleSideNav } />
         <div className="logo">
           <h1>To-Do List</h1>
         </div>

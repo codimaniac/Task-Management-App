@@ -27,14 +27,14 @@ const TaskMaximized = () => {
 
         <p>
           <b>Checklist: </b>
-          <ul>
-            <li>Confirm the number of guests attending.</li>
-            <li>Bring candles, matches/lighter, and a cake knife.</li>
-            <li>Prepare a birthday card for Nischal.</li>
-            <li>Coordinate with others for group gift contributions.</li>
-            <li>Arrive at least 15 minutes early to help with setup.</li>
-          </ul>
         </p>
+        <ul>
+          <li>Confirm the number of guests attending.</li>
+          <li>Bring candles, matches/lighter, and a cake knife.</li>
+          <li>Prepare a birthday card for Nischal.</li>
+          <li>Coordinate with others for group gift contributions.</li>
+          <li>Arrive at least 15 minutes early to help with setup.</li>
+        </ul>
         <p>
           <b>Notes: </b>
           Remember to take lots of photos and enjoy the moment!

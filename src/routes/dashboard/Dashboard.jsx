@@ -27,7 +27,7 @@ const Dashboard = () => {
               Task Status
             </div>
             <div className="graph">
-              <span className="completed" style={{width: "6.5rem", height: "auto", color: "var(--primary-color)" }}>
+              <span className="completed" style={{width: "6rem", height: "6rem", color: "var(--primary-color)" }}>
                 <CircularProgressbar value={completedPercentage} text={`${completedPercentage}%`} />
               </span>
               <span className="completed" style={{width: "6rem", height: "6rem" }}>

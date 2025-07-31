@@ -71,6 +71,7 @@
 
 .notifications {
     position: relative;
+    line-height: 0;
 }
 
 .notification-icon {

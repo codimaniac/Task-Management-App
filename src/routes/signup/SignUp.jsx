@@ -2,10 +2,12 @@ import React from 'react'
 import './signup.css'
 import PersonalData from "../../assets/personal-data.svg";
 import { Link } from 'react-router-dom';
+import { PreviousPage } from '../../components';
 
 const SignUp = () => {
   return (
     <div className="signup">
+      <PreviousPage />
       <div className="signup-container">
         <div className="signup-form">
           <h1>SignUp</h1>

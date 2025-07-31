@@ -80,7 +80,23 @@
 
 @media (max-width: 768px) {
     .sidebar {
-        display: none;
-        
+        position: fixed;
+        left: -100%;
+        top: auto;
+        width: 75vw;
+        height: -webkit-fill-available;
+        transition: all 1s ease;
+    }
+
+    .active {
+        left: 0;
+    }
+
+    .account-pfp {
+        position: unset;
+    }
+
+    .account-name {
+        margin-top: 1rem;
     }
 }

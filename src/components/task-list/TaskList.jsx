@@ -24,6 +24,7 @@ const TaskList = () => {
         </span>
         <TaskMinimized />
         <TaskMinimized />
+        <TaskMinimized />
     </div>
   )
 }

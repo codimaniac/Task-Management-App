@@ -7,19 +7,19 @@ const TaskMinimized = () => {
   return (
     <div className="task-minimized">
         <div className="circle-outline"></div>
-        <div class="task-details">
+        <div className="task-details">
           <h2>Attend Nischal’s Birthday Party</h2>
           <div className="task-desc-container">
-            <p class="description">
+            <p className="description">
               Buy gifts on the way and pick up cake from the bakery.
-              <span class="time-location">(6 PM | Fresh Elements)</span>
+              <span className="time-location">(6 PM | Fresh Elements)</span>
             </p>
             <img className='detailed-pics' src={ BirthdayPics } alt="Birthday Picture" />
           </div>
-          <div class="meta">
-            <span class="priority">Priority: <span class="moderate">Moderate</span></span>
-            <span class="status">Status: <span class="not-started">Not Started</span></span>
-            <span class="created">Created on: 20/06/2023</span>
+          <div className="meta">
+            <span className="priority">Priority: <span className="moderate">Moderate</span></span>
+            <span className="status">Status: <span className="not-started">Not Started</span></span>
+            <span className="created">Created on: 20/06/2023</span>
           </div>
         </div>
         <HollowMoreHoriz className='more-icon' />
