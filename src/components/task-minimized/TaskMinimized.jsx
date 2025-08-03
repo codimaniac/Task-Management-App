@@ -1,9 +1,14 @@
-import React from 'react'
+import { React, useState } from 'react'
 import './task-minimized.css'
 import BirthdayPics from '../../assets/Birthday.jpg'
 import HollowMoreHoriz from '../more-hollow-horiz/HollowMoreHoriz'
 
 const TaskMinimized = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const ToggleActions = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
     <div className="task-minimized">
         <div className="circle-outline"></div>
@@ -22,11 +27,12 @@ const TaskMinimized = () => {
             <span className="created">Created on: 20/06/2023</span>
           </div>
         </div>
-        <HollowMoreHoriz className='more-icon' />
-        {/* <div className="task-actions">
-          <button className="edit-btn">Edit</button>
-          <button className="delete-btn">Delete</button>
-        </div> */}
+        <div className='more-icon-container' onClick={ ToggleActions }><HollowMoreHoriz /></div>
+        <div className={`task-actions ${ isOpen ? 'flex' : '' }`}>
+          <button className="action">Edit</button>
+          <button className="action">Delete</button>
+          <button className="action">Finish</button>
+        </div>
     </ div>
   )
 }

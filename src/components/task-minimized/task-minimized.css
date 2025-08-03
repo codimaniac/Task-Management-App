@@ -1,8 +1,9 @@
 .task-minimized {
   display: flex;
+  position: relative;
   gap: 10px;
   padding: 1rem;
-  border: 1px solid var(--gray-color);
+  border: 1px solid var(--gray-light-color);
   border-radius: 14px;
 }
 
@@ -77,6 +78,39 @@
 
 .completed {
   color: var(--green-color); /* Completed - green */
+}
+
+.task-actions {
+  display: none;
+  flex-direction: column;
+  /* gap: 0.5rem; */
+  overflow: hidden;
+  position:absolute;
+  top: 2.5rem;
+  right: 1rem;
+  width: 5rem;
+  border-radius: 0.5rem;
+  border: 0.5px solid var(--gray-lighter-color);
+  background-color: var(--light-color);
+}
+
+.action {
+  text-align: left;
+  border: none;
+  background: none;
+  font-size: 0.75rem;
+  padding: 0.45rem 0.9rem;
+  color: var(--gray-color);
+}
+
+.action:hover {
+  cursor: pointer;
+  color: var(--accent-color);
+  background-color: var(--gray-lighter-color);
+}
+
+.flex {
+  display: flex;
 }
 
 @media (max-width: 768px) {
