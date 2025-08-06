@@ -83,7 +83,7 @@
     .sidebar {
         position: fixed;
         left: -100%;
-        top: auto;
+        top: 4rem;
         width: 75vw;
         height: calc(100vh - 4rem);
         transition: all 1s ease;
