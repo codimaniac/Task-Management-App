@@ -30,13 +30,16 @@
     gap: 0.5rem;
 }
 
+.to-do-list-header > a {
+    margin-left: auto;
+}
+
 .add-task {
     cursor: pointer;
     color: var(--gray-color);
     font-size: 12px;
     font-weight: 500;
     padding: 4px 8px;
-    margin-left: auto;
     border-radius: 8px;
     border: 1px solid var(--primary-color);
     color: var(--primary-color);

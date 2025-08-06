@@ -3,7 +3,8 @@ import './task-list.css'
 import { MdToday } from 'react-icons/md'
 import { FaPlus } from 'react-icons/fa'
 import TaskMinimized from '../task-minimized/TaskMinimized'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import TaskForm from '../task-form/TaskForm'
 
 const TaskList = () => {
   const location = useLocation()
@@ -17,10 +18,10 @@ const TaskList = () => {
               <MdToday className='dashboard-header-icons' />
               To-Do List
           </div>
-          { showAddTask && <div className="add-task">
+          { showAddTask && <Link to="/addtask"><div className="add-task">
               <FaPlus className='add-task-icon' />
               <span className='add-task-text'>Add Task</span>
-          </div> }
+          </div></Link> }
         </span>
         <TaskMinimized />
         <TaskMinimized />

@@ -1,5 +1,6 @@
 export { default as SideBar } from './sidebar/SideBar'
 export { default as TopBar } from './topbar/TopBar'
+export { default as TaskForm } from './task-form/TaskForm'
 export { default as TaskList } from './task-list/TaskList'
 export { default as TaskMaximized } from './task-maximized/TaskMaximized'
 export { default as TaskMinimized } from './task-minimized/TaskMinimized'
