@@ -3,15 +3,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* width: calc(100vw - 267px); */
     height: 100%;
     margin: 0 auto;
+    padding: 1rem;
     background: var(--light-color);
 }
 
 .task-form-container {
     width: 50vw;
-    min-height: 60%;
     background-color: var(--light-color);
     color: var(--dark-color);
     padding: 1rem;
@@ -39,7 +38,7 @@
 }
 
 .task-form-container textarea {
-    height: 150px;
+    height: 50px;
 }
 
 .task-form-container input::placeholder {

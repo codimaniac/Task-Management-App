@@ -2,7 +2,7 @@ import React from 'react'
 import './dashboard.css'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { MdCheckCircleOutline, MdPersonAdd } from 'react-icons/md';
+import { MdCheckCircleOutline, MdCircle, MdPersonAdd } from 'react-icons/md';
 import { AiOutlinePieChart } from 'react-icons/ai';
 import TaskMinimized from '../../components/task-minimized/TaskMinimized';
 import TaskList from '../../components/task-list/TaskList';
@@ -27,15 +27,24 @@ const Dashboard = () => {
               Task Status
             </div>
             <div className="graph">
-              <span className="completed" style={{width: "6rem", height: "6rem", color: "var(--primary-color)" }}>
-                <CircularProgressbar value={completedPercentage} text={`${completedPercentage}%`} />
-              </span>
-              <span className="completed" style={{width: "6rem", height: "6rem" }}>
-                <CircularProgressbar value={inProgressPercentage} text={`${inProgressPercentage}%`} />
-              </span>
-              <span className="completed" style={{width: "6rem", height: "6rem" }}>
-                <CircularProgressbar value={notStartedPercentage} text={`${notStartedPercentage}%`} />
-              </span>
+              <div className="completed">
+                <span className="progress-bar">
+                  <CircularProgressbar value={completedPercentage} text={`${completedPercentage}%`} />
+                </span>
+                <span className="progress-bar-title"><MdCircle /> Completed</span>
+              </div>
+              <div className="in-progress">
+                <span className="progress-bar">
+                  <CircularProgressbar value={inProgressPercentage} text={`${inProgressPercentage}%`} />
+                </span>
+                <span className="progress-bar-title"><MdCircle /> In-progress</span>
+              </div>
+              <div className="not-started">
+                <span className="progress-bar">
+                  <CircularProgressbar value={notStartedPercentage} text={`${notStartedPercentage}%`} />
+                </span>
+                <span className="progress-bar-title"><MdCircle /> Not Started</span>
+              </div>
             </div>
           </div>
           <div className="completed-task-list">

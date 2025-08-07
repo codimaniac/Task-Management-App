@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './topbar.css'
 import SideNavToggle from '../side-nav-toggle/SideNavToggle'
 import { FaSearch, FaRegBell } from 'react-icons/fa'
+import { MdAccountCircle } from 'react-icons/md'
 
 const TopBar = ({isOpen, toggleSideNav}) => {
+  const [isNotificationVisible, setNotificationVisibility] = useState(false)
+  const toggleNotification = () => setNotificationVisibility(!isNotificationVisible)
+  const today = new Date()
+  const dayName = today.toLocaleDateString("en-US", {weekday: "long"})
+  const date = String(today.getDate()).padStart(2, "0")
+  const month = String(today.getMonth()).padStart(2, "0")
+  const year = String(today.getFullYear())
+  const formattedDate = `${date}/${month}/${year}`
+
   return (
     <nav className='topbar'>
       <div className="topbar-container">
@@ -15,9 +25,19 @@ const TopBar = ({isOpen, toggleSideNav}) => {
           <input className='search-input' id='search-text' type="text" placeholder="Search..." />
           <span className='search-icon'><FaSearch color='white'/></span>
         </div>
-        <div className="notifications">
+        <div className="profile">
+          <MdAccountCircle className='profile-icon'/>
+        </div>
+        <div className="notifications" onClick={toggleNotification}>
           <FaRegBell className='notification-icon' />
           <span className="notification-count">3</span>
+        </div>
+        <div className="date">
+          <span className="day">{ dayName }</span>
+          <span className="date">{ formattedDate }</span>
+        </div>
+        <div className={`notification-list ${ isNotificationVisible ? 'show-notification' : '' }`}>
+          No available notification
         </div>
       </div>
     </nav>
