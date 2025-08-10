@@ -1,12 +1,12 @@
 import React from 'react'
 import './taskform.css'
 
-const TaskForm = () => {
+const TaskForm = ({ title, submitTitle }) => {
   return (
     <div className="task-form">
         <div className="task-form-container">
             <div className="input-flex-container">
-                <h3>Add New Task</h3>
+                <h3>{ title }</h3>
             </div>
             <form action="#">
                 <input type="text" name="title" id="title" placeholder='Enter Title' />
@@ -22,7 +22,7 @@ const TaskForm = () => {
                     <input type="date" name="dueDate" id="dueDate" />
                     <input type="file" name="attachment" id="attachment" />
                 </div>
-                <input type="submit" value="Add Task" />
+                <input type="submit" value={ submitTitle } />
             </form>
         </div>
     </div>

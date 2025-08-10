@@ -128,4 +128,8 @@
     .task-status {
         order: -1;
     }
+
+    .graph > .not-started, .graph > .completed, .graph > .in-progress {
+        font-size: 0.75rem;
+    }
 }

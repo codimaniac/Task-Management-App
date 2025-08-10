@@ -21,10 +21,10 @@ const TopBar = ({isOpen, toggleSideNav}) => {
         <div className="logo">
           <h1>To-Do List</h1>
         </div>
-        <div className="search-bar">
+        {/* <div className="search-bar">
           <input className='search-input' id='search-text' type="text" placeholder="Search..." />
           <span className='search-icon'><FaSearch color='white'/></span>
-        </div>
+        </div> */}
         <div className="profile">
           <MdAccountCircle className='profile-icon'/>
         </div>

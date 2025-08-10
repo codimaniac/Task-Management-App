@@ -110,6 +110,14 @@
   background-color: var(--gray-lighter-color);
 }
 
+/* .action > a {
+  color: var(--gray-color);
+}
+
+.action > a:hover {
+  color: var(--accent-color);  
+} */
+
 .flex {
   display: flex;
 }

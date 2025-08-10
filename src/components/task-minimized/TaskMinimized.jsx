@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 import './task-minimized.css'
 import BirthdayPics from '../../assets/Birthday.jpg'
 import HollowMoreHoriz from '../more-hollow-horiz/HollowMoreHoriz'
+import { Link } from 'react-router-dom'
 
 const TaskMinimized = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,7 +30,7 @@ const TaskMinimized = () => {
         </div>
         <div className='more-icon-container' onClick={ ToggleActions }><HollowMoreHoriz /></div>
         <div className={`task-actions ${ isOpen ? 'flex' : '' }`}>
-          <button className="action">Edit</button>
+          <button className="action"><Link to="/edittask">Edit</Link></button>
           <button className="action">Delete</button>
           <button className="action">Finish</button>
         </div>

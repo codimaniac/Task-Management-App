@@ -78,7 +78,7 @@ const SignUp = () => {
             </label>
             <input type="submit" value="Register" />
             <span className="call-to-login">
-              Already have an account?
+              Already have an account? 
               <Link to="/login">
                 Login
               </Link>
