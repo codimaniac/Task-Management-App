@@ -50,3 +50,21 @@
     background-color: var(--secondary-color);
     color: var(--light-color);
 }
+
+.sorted-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.loading-task, .error-loading {
+    color: var(--gray-color);
+    text-align: center;
+    margin: 5rem 0;
+}
+
+.default-msg {
+    color: var(--gray-color);
+    text-align: center;
+    margin: 5rem 0;
+}

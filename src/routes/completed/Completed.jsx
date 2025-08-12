@@ -8,7 +8,7 @@ const Completed = () => {
     <div className="container">
       <h1>Completed Task</h1>
       <div className="content">
-        <TaskList />
+        <TaskList sortby="status" value="Completed"/>
         <TaskMaximized />
       </div>
     </div>

@@ -8,7 +8,7 @@ const Vital = () => {
     <div className="container">
       <h1>Vital Tasks</h1>
       <div className="content">
-        <TaskList />
+        <TaskList sortby="priority" value="High"/>
         <TaskMaximized />
       </div>
     </div>

@@ -7,6 +7,7 @@ import { AiOutlinePieChart } from 'react-icons/ai';
 import TaskMinimized from '../../components/task-minimized/TaskMinimized';
 import TaskList from '../../components/task-list/TaskList';
 import InviteUsers from '../../components/invite-users/InviteUsers';
+import SortedTask from '../../components/SortedTask';
 
 const Dashboard = () => {
   const completedPercentage = 10
@@ -29,17 +30,17 @@ const Dashboard = () => {
               Task Status
             </div>
             <div className="graph">
-              <div className="completed">
+              <div className="not-started">
                 <span className="progress-bar">
-                  <CircularProgressbar value={completedPercentage} text={`${completedPercentage}%`}
+                  <CircularProgressbar value={notStartedPercentage} text={`${notStartedPercentage}%`}
                     styles={buildStyles({
                       textSize: '1rem',
-                      pathColor: '#4cd964',
+                      pathColor: '#ff3b30',
                       textColor: '#290000',
                       trailColor: '#d6d6d6',
                     })} />
                 </span>
-                <span className="progress-bar-title"><MdCircle /> Completed</span>
+                <span className="progress-bar-title"><MdCircle /> Not Started</span>
               </div>
               <div className="in-progress">
                 <span className="progress-bar">
@@ -53,17 +54,17 @@ const Dashboard = () => {
                 </span>
                 <span className="progress-bar-title"><MdCircle /> In-progress</span>
               </div>
-              <div className="not-started">
+              <div className="completed">
                 <span className="progress-bar">
-                  <CircularProgressbar value={notStartedPercentage} text={`${notStartedPercentage}%`}
+                  <CircularProgressbar value={completedPercentage} text={`${completedPercentage}%`}
                     styles={buildStyles({
                       textSize: '1rem',
-                      pathColor: '#ff3b30',
+                      pathColor: '#4cd964',
                       textColor: '#290000',
                       trailColor: '#d6d6d6',
                     })} />
                 </span>
-                <span className="progress-bar-title"><MdCircle /> Not Started</span>
+                <span className="progress-bar-title"><MdCircle /> Completed</span>
               </div>
             </div>
           </div>
@@ -72,8 +73,7 @@ const Dashboard = () => {
               <MdCheckCircleOutline className='dashboard-header-icons' />
               Completed Tasks
             </span>
-            <TaskMinimized /> 
-            <TaskMinimized />
+            <SortedTask sortby="status" value="Completed" />
           </div>          
         </div>
       </div>

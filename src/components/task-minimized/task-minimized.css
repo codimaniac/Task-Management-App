@@ -43,7 +43,7 @@
 }
 
 
-.description {
+.objective {
   font-size: 12px;
   color: var(--gray-color);
   margin-bottom: 12px;
@@ -55,30 +55,45 @@
     border-radius: 8px;
 }
 
-.time-location {
-  color: var(--gray-light-color);
-}
-
 .meta {
-  font-size: 10px;
+  font-size: 9px;
   display: flex;
   gap: 1rem;
 }
 
 .moderate {
-  color: var(--blue-color); /* Moderate - blue */
+  color: var(--orange-color); /* Moderate - blue */
 }
 
-.not-started {
-  color: var(--red-color); /* Not Started - red */
+.high {
+  color: var(--red-color); /* High - orange */
+}
+
+.low {
+  color: var(--blue-color); /* Low - green */
 }
 
 .created {
   color: var(--gray-light-color);
 }
 
+.not-started {
+  color: var(--gray-color); /* Not Started - red */
+  border-color: var(--gray-color);
+}
+
+.in-progress {
+  color: var(--blue-color);
+  border-color: var(--blue-color);
+}
+
 .completed {
   color: var(--green-color); /* Completed - green */
+  border-color: var(--green-color);
+}
+
+.more-icon-container {
+  margin-left: auto;
 }
 
 .task-actions {
@@ -96,6 +111,7 @@
 }
 
 .action {
+  width: 100%;
   text-align: left;
   border: none;
   background: none;
@@ -111,11 +127,18 @@
 }
 
 /* .action > a {
+  text-align: left;
+  border: none;
+  background: none;
+  font-size: 0.75rem;
+  padding: 0.45rem 0.9rem;
   color: var(--gray-color);
 }
 
 .action > a:hover {
-  color: var(--accent-color);  
+  cursor: pointer;
+  color: var(--accent-color);
+  background-color: var(--gray-lighter-color);
 } */
 
 .flex {

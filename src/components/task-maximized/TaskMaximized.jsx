@@ -1,6 +1,7 @@
 import React from 'react'
 import './task-maximized.css'
 import BirthdayPics from '../../assets/Birthday.jpg'
+import { MdDelete, MdEdit } from 'react-icons/md'
 
 const TaskMaximized = () => {
   return (
@@ -19,7 +20,7 @@ const TaskMaximized = () => {
       <div className="task-detailed-description">
         <p>
           <b>Objective: </b>
-          Buy gifts on the way and pick up cake from the bakery. (6 PM | Fresh Elements)</p>
+          Buy gifts on the way and pick up cake from the bakery.</p>
         <p>
           <b>Task Description: </b>
           Join Nischal and friends for a fun and memorable birthday celebration! This event is an opportunity to relax, enjoy great food, and connect with others in a lively and joyful setting. Be sure to bring a gift and a cheerful spirit!
@@ -43,6 +44,10 @@ const TaskMaximized = () => {
           <b>Deadline: </b>
           20/06/2023, 6:00 PM
         </p>
+      </div>
+      <div className="maximized-actions">
+        <div className="edit-action"><MdEdit /></div>
+        <div className="delete-action"><MdDelete /></div>
       </div>
     </div>
   )
