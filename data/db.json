@@ -1,0 +1,106 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Complete the project report",
+      "objective": "Ensure all sections are reviewed and finalized.",
+      "description": "Finalize the project report and submit it by the end of the week.",
+      "checklist": [
+        "Review the introduction",
+        "Update the methodology section",
+        "Add the conclusion"
+      ],
+      "priority": "High",
+      "status": "In-progress",
+      "datecreated": "2023-10-01",
+      "dueDate": "2023-10-07",
+      "dueTime": "17:00",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "title": "Prepare for the team meeting",
+      "objective": "Gather all necessary documents and prepare the agenda.",
+      "description": "Ensure all team members are updated on the project status before the meeting.",
+      "checklist": [
+        "Collect project updates from team members",
+        "Draft the meeting agenda",
+        "Send out calendar invites"
+      ],
+      "priority": "Moderate",
+      "status": "Not Started",
+      "datecreated": "2023-10-02",
+      "dueDate": "2023-10-05",
+      "dueTime": "10:00",
+      "completed": false
+    },
+    {
+      "id": "3",
+      "title": "Conduct user testing",
+      "objective": "Test the new features with real users and gather feedback.",
+      "description": "Schedule and conduct user testing sessions to evaluate the new features.",
+      "checklist": [
+        "Recruit participants",
+        "Prepare testing scenarios",
+        "Analyze feedback"
+      ],
+      "priority": "Low",
+      "status": "Completed",
+      "datecreated": "2023-10-03",
+      "dueDate": "2023-10-10",
+      "dueTime": "15:00",
+      "completed": false
+    },
+    {
+      "id": "4",
+      "title": "Update the website content",
+      "objective": "Refresh the content to reflect the latest company updates.",
+      "description": "Review and update the website content to ensure it is current and accurate.",
+      "checklist": [
+        "Review homepage content",
+        "Update service descriptions",
+        "Check for broken links"
+      ],
+      "priority": "Moderate",
+      "status": "Not Started",
+      "datecreated": "2023-10-04",
+      "dueDate": "2023-10-12",
+      "dueTime": "12:00",
+      "completed": false
+    },
+    {
+      "id": "5",
+      "title": "Plan the marketing campaign",
+      "objective": "Develop a strategy for the upcoming marketing campaign.",
+      "description": "Create a detailed plan for the marketing campaign including target audience and channels.",
+      "checklist": [
+        "Define target audience",
+        "Select marketing channels",
+        "Set campaign goals"
+      ],
+      "priority": "High",
+      "status": "Completed",
+      "datecreated": "2023-10-05",
+      "dueDate": "2023-10-15",
+      "dueTime": "09:00",
+      "completed": false
+    },
+    {
+      "id": "7859",
+      "title": "Leg Day Gym Session",
+      "objective": "Work on my leg muscles in the gym today",
+      "description": "Strengthen and build lower body with squats, lunges, deadlifts, and accessory work. Focus on quads, hamstrings, glutes, and calves. Include warm-up, cool-down, and stretching.",
+      "checklist": [
+        "Hamstring stretch",
+        "Quadriceps stretch",
+        "Calf stretch"
+      ],
+      "priority": "High",
+      "status": "Not Started",
+      "datecreated": "2025-08-14",
+      "dueDate": "2025-08-23",
+      "dueTime": "07:10",
+      "completed": false
+    }
+  ]
+}

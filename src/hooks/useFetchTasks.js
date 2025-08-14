@@ -6,7 +6,7 @@ export default function useFetchTasks() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("./db.json")
+    fetch("http://localhost:5000/tasks")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Could not locate resource");
@@ -14,7 +14,7 @@ export default function useFetchTasks() {
         return response.json();
       })
       .then((data) => {
-        setTasks(data.tasks);
+        setTasks(data);
         setLoading(false);
       })
       .catch((error) => {
@@ -23,5 +23,6 @@ export default function useFetchTasks() {
       });
   }, []);
 
-  return { tasks, loading, error };
+  // Return the tasks, loading state, and error state
+  return [tasks, loading, error]
 }

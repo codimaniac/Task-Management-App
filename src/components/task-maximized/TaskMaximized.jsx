@@ -1,13 +1,14 @@
 import React from 'react'
 import './task-maximized.css'
 import BirthdayPics from '../../assets/Birthday.jpg'
+import Checklist from '../../assets/checklist.png'
 import { MdDelete, MdEdit } from 'react-icons/md'
 
 const TaskMaximized = () => {
   return (
     <div className='task-maximized-container'>
       <div className="task-maximized-header">
-        <img src={ BirthdayPics } alt="Birthday Picture" />
+        <img src={ Checklist } alt="Birthday Picture" />
         <div className="key-details">
           <h2>Attend Nischal’s Birthday Party</h2>
           <div className="task-meta">
