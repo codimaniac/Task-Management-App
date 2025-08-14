@@ -41,6 +41,10 @@
     height: 50px;
 }
 
+.task-form-container input[type = "submit"] {
+    cursor: pointer;
+}
+
 .task-form-container input::placeholder {
   color: var(--gray-color);
 }

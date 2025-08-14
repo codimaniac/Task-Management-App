@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import TaskMinimized from "./task-minimized/TaskMinimized";
-import useFetchTasks from '../hooks/useFetchTasks'
+import { useFetchTasks } from '../hooks/useFetchTasks'
 
 const SortedTask = ({ sortby, value }) => {
   const [tasks, loading, error] = useFetchTasks();
@@ -15,6 +15,7 @@ const SortedTask = ({ sortby, value }) => {
               return (
                   <TaskMinimized
                   key={task.id}
+                  id={task.id}
                   title={task.title}
                   objective={task.objective}
                   priority={task.priority}

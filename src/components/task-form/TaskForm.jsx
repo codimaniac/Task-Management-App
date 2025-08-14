@@ -1,12 +1,11 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import "./taskform.css";
-import useFetchTasks from "../../hooks/useFetchTasks";
-import { updateTask } from "../../utils/createTask";
+import { createTask, editTask, updateTask } from "../../utils/taskManager";
 import { useNavigate } from "react-router-dom";
 
 const TaskForm = ({ title, submitTitle }) => {
-  const [tasks] = useFetchTasks()
   const navigate = useNavigate();
+  const [editing, setEditingTask] = useState(null)
 
   const createNewTask = (e) => {
     e.preventDefault();
@@ -14,22 +13,31 @@ const TaskForm = ({ title, submitTitle }) => {
     const newTask = updateTask(formData);
     
     // POST newTask to the server
-    if (newTask.title !== "") {
-      fetch('http://localhost:5000/tasks', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newTask)
-      })
-      .then(res => res.json())
-      .then(data => console.log("Task created:", data))
-      .catch(error => console.error("Error creating task:", error));   
-    }
+    createTask(newTask);
 
-    e.target.reset(); // Reset the form after submission
-    navigate('/tasks'); // Navigate to the tasks page after creating a task
-  }  
+    // Reset the form after submission
+    e.target.reset();
+
+    // Navigate to the tasks page after creating a task
+    navigate('/tasks');
+  }
+
+  const editExistingTask = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target)
+    const editedTask = updateTask(formData)
+
+    // PUT editedTask to the server
+    editTask(editedTask);
+
+    // Reset the form after submission
+    e.target.reset(); 
+
+    // Navigate to the tasks page after editing a task
+    navigate('/tasks');
+  }
+
+
 
   return (
     <div className="task-form">

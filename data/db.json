@@ -28,7 +28,7 @@
         "Send out calendar invites"
       ],
       "priority": "Moderate",
-      "status": "Not Started",
+      "status": "In-progress",
       "datecreated": "2023-10-02",
       "dueDate": "2023-10-05",
       "dueTime": "10:00",
@@ -86,7 +86,7 @@
       "completed": false
     },
     {
-      "id": "7859",
+      "id": "57db",
       "title": "Leg Day Gym Session",
       "objective": "Work on my leg muscles in the gym today",
       "description": "Strengthen and build lower body with squats, lunges, deadlifts, and accessory work. Focus on quads, hamstrings, glutes, and calves. Include warm-up, cool-down, and stretching.",
@@ -95,11 +95,11 @@
         "Quadriceps stretch",
         "Calf stretch"
       ],
-      "priority": "High",
-      "status": "Not Started",
+      "priority": "Moderate",
+      "status": "In-progress",
       "datecreated": "2025-08-14",
-      "dueDate": "2025-08-23",
-      "dueTime": "07:10",
+      "dueDate": "2025-08-16",
+      "dueTime": "07:40",
       "completed": false
     }
   ]
