@@ -16,6 +16,15 @@ export const updateTask = (formData) => {
     return newTask;
 }
 
+export const updateEditForm = (form, prevTaskData) => {
+    prevTaskData.title && `${ form.title.value = prevTaskData.title }`
+    prevTaskData.objective && `${ form.objective.value = prevTaskData.objective }`
+    prevTaskData.description && `${ form.description.value = prevTaskData.description }`
+    prevTaskData.checklist && `${ form.checklist.value = prevTaskData.checklist.join('\n') }`
+    prevTaskData.priority && `${ form.priority.value = prevTaskData.priority }`
+    prevTaskData.dueDate && `${ form.dueDateTime.value = prevTaskData.dueDate + "T" + prevTaskData.dueTime }`
+}
+
 // Function to reset the new task to its initial state
 export const resetTask = () => {
     const newTask = {

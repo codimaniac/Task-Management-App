@@ -28,28 +28,22 @@ export function useFetchTasks() {
 }
 
 export function useFetchTask(id) {
-  const [task, setTask] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  let [task, setTask] = useState({}) 
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/tasks/${id}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Could not locate resource");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setTask(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setLoading(false);
-      });
-  }, [task.length]);
+  fetch(`http://localhost:5000/tasks/${id}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Could not locate resource");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      setTask(data)
+    })
+    .catch((error) => {
+      console.error(error)
+    });
 
-  // Return the tasks, loading state, and error state
-  return [task, loading, error]
+  // Return the tasks
+  return [task]
 }

@@ -18,7 +18,6 @@
       "completed": false
     },
     {
-      "id": "2",
       "title": "Prepare for the team meeting",
       "objective": "Gather all necessary documents and prepare the agenda.",
       "description": "Ensure all team members are updated on the project status before the meeting.",
@@ -27,12 +26,13 @@
         "Draft the meeting agenda",
         "Send out calendar invites"
       ],
-      "priority": "Moderate",
-      "status": "In-progress",
-      "datecreated": "2023-10-02",
+      "priority": "High",
+      "status": "Not Started",
+      "datecreated": "2025-08-14",
       "dueDate": "2023-10-05",
       "dueTime": "10:00",
-      "completed": false
+      "completed": false,
+      "id": "2"
     },
     {
       "id": "3",

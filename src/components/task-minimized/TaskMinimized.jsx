@@ -1,11 +1,11 @@
 import { React, useState } from 'react'
 import './task-minimized.css'
-import BirthdayPics from '../../assets/Birthday.jpg'
 import HollowMoreHoriz from '../more-hollow-horiz/HollowMoreHoriz'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { deleteTask, finishTask, startTask } from '../../utils/taskManager'
 
 const TaskMinimized = ({id, title, objective, priority, status, datecreated }) => {
+  const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
   const ToggleActions = () => {
     setIsOpen(!isOpen)
@@ -14,6 +14,10 @@ const TaskMinimized = ({id, title, objective, priority, status, datecreated }) =
   const deleteID = () => deleteTask(id)
   const startID = () => startTask(id)
   const finishID = () => finishTask(id)
+
+  const handleEdit = () => {
+    navigate("/edittask", {state: id})
+  }
 
   return (
     <div className="task-minimized">
@@ -34,7 +38,7 @@ const TaskMinimized = ({id, title, objective, priority, status, datecreated }) =
         </div>
         <div className='more-icon-container' onClick={ ToggleActions }><HollowMoreHoriz /></div>
         <div className={`task-actions ${ isOpen ? 'flex' : '' }`}>
-          <Link to="/edittask"><button className="action">Edit</button></Link>
+          <button className="action" onClick={handleEdit}>Edit</button>
           <button className="action" onClick={deleteID}>Delete</button>
           {status == "Not Started" && <button className="action" onClick={startID}>Start</button>}
           {status == "In-progress" && <button className="action" onClick={finishID}>Finish</button>}

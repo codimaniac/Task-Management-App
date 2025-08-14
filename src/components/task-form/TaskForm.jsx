@@ -1,11 +1,24 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useRef, useState } from "react";
 import "./taskform.css";
-import { createTask, editTask, updateTask } from "../../utils/taskManager";
-import { useNavigate } from "react-router-dom";
+import { createTask, editTask, updateEditForm, updateTask } from "../../utils/taskManager";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useFetchTask } from "../../hooks/useFetchTasks";
+
 
 const TaskForm = ({ title, submitTitle }) => {
   const navigate = useNavigate();
-  const [editing, setEditingTask] = useState(null)
+  const formRef = useRef(null)
+  const { state } = useLocation()
+  const [task] = useFetchTask(state)
+
+  // Input task details into edit form on page load
+  useEffect(() => {
+    if(title == "Edit Task") {
+      const form = formRef.current
+      updateEditForm(form, task)
+    }
+
+  }, [task.title])
 
   const createNewTask = (e) => {
     e.preventDefault();
@@ -28,7 +41,7 @@ const TaskForm = ({ title, submitTitle }) => {
     const editedTask = updateTask(formData)
 
     // PUT editedTask to the server
-    editTask(editedTask);
+    editTask(state, editedTask);
 
     // Reset the form after submission
     e.target.reset(); 
@@ -45,7 +58,7 @@ const TaskForm = ({ title, submitTitle }) => {
         <div className="input-flex-container">
           <h3>{title}</h3>
         </div>
-        <form method="POST" onSubmit={createNewTask}>
+        <form method="POST" onSubmit={title == "Edit Task" ? editExistingTask : `${title == "Add New Task" ? createNewTask : undefined }`} ref={formRef}>
           <input
             type="text"
             name="title"
