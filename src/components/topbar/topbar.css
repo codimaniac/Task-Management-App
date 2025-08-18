@@ -104,8 +104,6 @@
 .notification-list {
     display: none;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 250px;
     min-height: 150px;
     font-size: 0.875rem;
@@ -123,6 +121,7 @@
 
 .show-notification {
     display: flex;
+    align-items: center;
 }
 
 .date {

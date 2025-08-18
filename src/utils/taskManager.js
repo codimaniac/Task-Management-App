@@ -143,3 +143,21 @@ export const finishTask = (id) => {
         .then(data => console.log("Finished ", data.title))
         .catch(error => console.error(error))
 }
+
+export const countTaskByValue = (tasks, sortBy, value) => {
+    let count = 0
+    let sortedTaskId = []
+
+    tasks.map((task) => {
+        if(task[sortBy] == value) {
+            count+=1
+            sortedTaskId.push(task.id)
+        }
+    })
+
+    return [count, sortedTaskId]
+}
+
+export const showDetails = (id) => {
+    console.log(id)
+}

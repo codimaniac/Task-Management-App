@@ -21,6 +21,7 @@ const SortedTask = ({ sortby, value }) => {
                   priority={task.priority}
                   status={task.status}
                   datecreated={task.datecreated}
+                  completed={task.completed}
                   />
               )
             }

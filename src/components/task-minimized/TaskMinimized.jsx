@@ -1,22 +1,26 @@
 import { React, useState } from 'react'
 import './task-minimized.css'
 import HollowMoreHoriz from '../more-hollow-horiz/HollowMoreHoriz'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { deleteTask, finishTask, startTask } from '../../utils/taskManager'
 
-const TaskMinimized = ({id, title, objective, priority, status, datecreated }) => {
+const TaskMinimized = ({id, title, objective, priority, status, datecreated, completed }) => {
+  const location = useLocation()
+  const pathname = location.pathname
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
   const ToggleActions = () => {
     setIsOpen(!isOpen)
   }
 
-  const deleteID = () => deleteTask(id)
-  const startID = () => startTask(id)
-  const finishID = () => finishTask(id)
-
+  const handleDelete = () => deleteTask(id)
+  const handleStart = () => startTask(id)
+  const handleFinish = () => finishTask(id)
   const handleEdit = () => {
     navigate("/edittask", {state: id})
+  }
+  const handleDetails = () => {
+    navigate(pathname, {state: id})
   }
 
   return (
@@ -38,10 +42,11 @@ const TaskMinimized = ({id, title, objective, priority, status, datecreated }) =
         </div>
         <div className='more-icon-container' onClick={ ToggleActions }><HollowMoreHoriz /></div>
         <div className={`task-actions ${ isOpen ? 'flex' : '' }`}>
-          <button className="action" onClick={handleEdit}>Edit</button>
-          <button className="action" onClick={deleteID}>Delete</button>
-          {status == "Not Started" && <button className="action" onClick={startID}>Start</button>}
-          {status == "In-progress" && <button className="action" onClick={finishID}>Finish</button>}
+          {pathname!=='/' && <button className="action" onClick={handleDetails}>Details</button>}
+          {!completed && <button className="action" onClick={handleEdit}>Edit</button>}
+          <button className="action" onClick={handleDelete}>Delete</button>
+          {status == "Not Started" && <button className="action" onClick={handleStart}>Start</button>}
+          {status == "In-progress" && <button className="action" onClick={handleFinish}>Finish</button>}
         </div>
     </ div>
   )

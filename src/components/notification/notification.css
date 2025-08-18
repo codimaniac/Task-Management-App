@@ -1,0 +1,11 @@
+.notification {
+    display: flex;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    border-bottom: 1px solid var(--gray-light-color);
+}
+
+.delete-notification {
+    cursor: pointer;
+}

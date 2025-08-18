@@ -11,11 +11,11 @@
         "Add the conclusion"
       ],
       "priority": "High",
-      "status": "In-progress",
+      "status": "Completed",
       "datecreated": "2023-10-01",
       "dueDate": "2023-10-07",
       "dueTime": "17:00",
-      "completed": false
+      "completed": true
     },
     {
       "title": "Prepare for the team meeting",
@@ -27,7 +27,7 @@
         "Send out calendar invites"
       ],
       "priority": "High",
-      "status": "Not Started",
+      "status": "In-progress",
       "datecreated": "2025-08-14",
       "dueDate": "2023-10-05",
       "dueTime": "10:00",
@@ -35,7 +35,6 @@
       "id": "2"
     },
     {
-      "id": "3",
       "title": "Conduct user testing",
       "objective": "Test the new features with real users and gather feedback.",
       "description": "Schedule and conduct user testing sessions to evaluate the new features.",
@@ -44,12 +43,13 @@
         "Prepare testing scenarios",
         "Analyze feedback"
       ],
-      "priority": "Low",
-      "status": "Completed",
-      "datecreated": "2023-10-03",
+      "priority": "Moderate",
+      "status": "Not Started",
+      "datecreated": "2025-08-14",
       "dueDate": "2023-10-10",
       "dueTime": "15:00",
-      "completed": false
+      "completed": false,
+      "id": "3"
     },
     {
       "id": "4",
@@ -79,7 +79,7 @@
         "Set campaign goals"
       ],
       "priority": "High",
-      "status": "Completed",
+      "status": "In-progress",
       "datecreated": "2023-10-05",
       "dueDate": "2023-10-15",
       "dueTime": "09:00",

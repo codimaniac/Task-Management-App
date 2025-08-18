@@ -4,15 +4,22 @@ import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { MdCheckCircleOutline, MdCircle, MdPersonAdd } from 'react-icons/md';
 import { AiOutlinePieChart } from 'react-icons/ai';
-import TaskMinimized from '../../components/task-minimized/TaskMinimized';
 import TaskList from '../../components/task-list/TaskList';
-import InviteUsers from '../../components/invite-users/InviteUsers';
+// import InviteUsers from '../../components/invite-users/InviteUsers';
 import SortedTask from '../../components/SortedTask';
+import { useFetchTasks } from '../../hooks/useFetchTasks';
+import { countTaskByValue } from '../../utils/taskManager';
 
 const Dashboard = () => {
-  const completedPercentage = 10
-  const inProgressPercentage = 40
-  const notStartedPercentage = 60
+  const [tasks, loading, error] = useFetchTasks()
+  const [numOfTaskCompleted] = countTaskByValue(tasks, "status", "Completed")
+  const [numOfTaskInProgress] = countTaskByValue(tasks, "status", "In-progress")
+  const [numOfTaskNotStarted] = countTaskByValue(tasks, "status", "Not Started")
+  const completedPercentage = Math.round((numOfTaskCompleted/tasks.length) * 100)
+  const inProgressPercentage = Math.round((numOfTaskInProgress/tasks.length) * 100)
+  const notStartedPercentage = Math.round((numOfTaskNotStarted/tasks.length) * 100)
+
+  
 
   return (
     <section className="container">

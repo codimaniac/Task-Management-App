@@ -28,7 +28,7 @@ export function useFetchTasks() {
 }
 
 export function useFetchTask(id) {
-  let [task, setTask] = useState({}) 
+  const [task, setTask] = useState({}) 
 
   fetch(`http://localhost:5000/tasks/${id}`)
     .then((response) => {

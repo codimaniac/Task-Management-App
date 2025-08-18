@@ -1,6 +1,6 @@
 import React from 'react'
 import './sidebar.css'
-import profilePic from '../../assets/Oscar Piastri Side Profile.jpeg'
+import profilePic from '../../assets/default-pfp-copy.jpg'
 import { MdDashboard, MdLogout, MdOutlineChecklist, MdOutlineDone, MdOutlineUpcoming } from 'react-icons/md'
 import { Link, useLocation } from 'react-router-dom'
 import { HiMiniShieldExclamation } from 'react-icons/hi2'
@@ -14,8 +14,8 @@ const SideBar = ({ isOpen, toggleSideNav }) => {
             <div className="sidebar-container">
                 <div className="account-info">
                     <img src={profilePic} alt="User PFP" className="account-pfp" />
-                    <p className="account-name">Oscar Piastri</p>
-                    <p className="account-email">oscarpiastri@mail.com</p>
+                    <p className="account-name">John Doe</p>
+                    <p className="account-email">JohnDoe@mail.com</p>
                 </div>
                 <nav className="sidebar-nav">
                     <Link to="/" onClick={ toggleSideNav } ><div className={`nav-item ${ pathname === '/' ? 'active' : '' }`}><MdDashboard size={24} /> Dashboard</div></Link>

@@ -3,6 +3,7 @@ import './topbar.css'
 import SideNavToggle from '../side-nav-toggle/SideNavToggle'
 import { FaSearch, FaRegBell } from 'react-icons/fa'
 import { MdAccountCircle } from 'react-icons/md'
+import Notification from '../notification/Notification'
 
 const TopBar = ({isOpen, toggleSideNav}) => {
   const [isNotificationVisible, setNotificationVisibility] = useState(false)
@@ -37,7 +38,10 @@ const TopBar = ({isOpen, toggleSideNav}) => {
           <span className="date">{ formattedDate }</span>
         </div>
         <div className={`notification-list ${ isNotificationVisible ? 'show-notification' : '' }`}>
-          No available notification
+          {/* <p className="no-notification">No available notification</p> */}
+          <Notification />
+          <Notification />
+          <Notification />
         </div>
       </div>
     </nav>
