@@ -35,7 +35,6 @@
       "id": "2"
     },
     {
-      "id": "3",
       "title": "Conduct user testing",
       "objective": "Test the new features with real users and gather feedback.",
       "description": "Schedule and conduct user testing sessions to evaluate the new features.",
@@ -44,12 +43,13 @@
         "Prepare testing scenarios",
         "Analyze feedback"
       ],
-      "priority": "Moderate",
+      "priority": "High",
       "status": "Not Started",
-      "datecreated": "2025-08-14",
+      "datecreated": "2025-08-19",
       "dueDate": "2023-10-10",
       "dueTime": "15:00",
-      "completed": false
+      "completed": false,
+      "id": "3"
     },
     {
       "id": "4",
@@ -103,7 +103,6 @@
       "completed": false
     },
     {
-      "id": "c786",
       "title": "Meet and greet with fans",
       "objective": "Host a meet and greet for my fans for the 2025 anual convention",
       "description": "Plan and host a 2025 meet and greet for my fans after the convention which is to be held on 25th August. The event will help promote a good relationship between the team and the fans in Asia. ",
@@ -111,14 +110,15 @@
         "Take pictures with fans",
         "Sign autograph for fans",
         "Visit some memorable site in Asia ",
-        "Sign a huge sponsorship deal"
+        "Sign a sponsorship deal with Coca-Cola"
       ],
       "priority": "High",
       "status": "Not Started",
       "datecreated": "2025-08-19",
       "dueDate": "2025-08-22",
-      "dueTime": "09:15",
-      "completed": false
+      "dueTime": "20:00",
+      "completed": false,
+      "id": "189e"
     }
   ]
 }

@@ -93,7 +93,6 @@ export const deleteTask = (id) => {
             }
             
             console.log('Task deleted successfully!')
-            window.location.reload()
             return res.json()
         })
         .then(data => console.log("Deleted Task: ", data))
@@ -115,7 +114,6 @@ export const startTask = (id) => {
                 throw new Error("Couldn't update task data")
             }
             
-            window.location.reload()
             return res.json()
         })
         .then(data => console.log("Started ", data.title))
@@ -138,7 +136,6 @@ export const finishTask = (id) => {
                 throw new Error("Couldn't update task data")
             }
 
-            window.location.reload()
             return res.json()
         })
         .then(data => console.log("Finished ", data.title))

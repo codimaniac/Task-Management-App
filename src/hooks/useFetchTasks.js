@@ -21,7 +21,7 @@ export function useFetchTasks() {
         setError(error.message);
         setLoading(false);
       });
-  }, [tasks.length]);
+  }, [tasks]);
 
   // Return the tasks, loading state, and error state
   return [tasks, loading, error]

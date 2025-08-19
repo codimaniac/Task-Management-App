@@ -20,30 +20,6 @@ const TaskForm = ({ title, submitTitle }) => {
 
   }, [task.title])
 
-  const createNewTask = (taskData) => {
-    
-    // POST newTask to the server
-    createTask(taskData);
-
-    // Reset the form after submission
-    e.target.reset();
-
-    // Navigate to the tasks page after creating a task
-    navigate('/tasks');
-  }
-
-  const editExistingTask = (taskData) => {
-
-    // PUT editedTask to the server
-    editTask(state, taskData);
-
-    // Reset the form after submission
-    e.target.reset(); 
-
-    // Navigate to the tasks page after editing a task
-    navigate('/tasks');
-  }
-
   const onSubmitHandle = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target)
