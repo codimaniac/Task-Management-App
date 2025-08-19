@@ -7,8 +7,7 @@ import { useFetchTask } from '../../hooks/useFetchTasks'
 const Tasks = () => {
   const {state} = useLocation()
   const [task] = useFetchTask(state)
-
-  state!==null && console.log(state)
+  
   return (
     <div className="container">
       <h1>My Task</h1>

@@ -56,6 +56,7 @@ export const createTask = (newTask) => {
                 if(!res.ok) {
                     throw new Error("Couldn't create task")
                 }
+                console.log("Task Created Successfully!")
                 return res.json()
             })
             .then(data => console.log("Task created:", data))

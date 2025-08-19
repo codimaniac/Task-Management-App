@@ -20,13 +20,10 @@ const TaskForm = ({ title, submitTitle }) => {
 
   }, [task.title])
 
-  const createNewTask = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target)
-    const newTask = updateTask(formData);
+  const createNewTask = (taskData) => {
     
     // POST newTask to the server
-    createTask(newTask);
+    createTask(taskData);
 
     // Reset the form after submission
     e.target.reset();
@@ -35,13 +32,10 @@ const TaskForm = ({ title, submitTitle }) => {
     navigate('/tasks');
   }
 
-  const editExistingTask = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target)
-    const editedTask = updateTask(formData)
+  const editExistingTask = (taskData) => {
 
     // PUT editedTask to the server
-    editTask(state, editedTask);
+    editTask(state, taskData);
 
     // Reset the form after submission
     e.target.reset(); 
@@ -50,7 +44,31 @@ const TaskForm = ({ title, submitTitle }) => {
     navigate('/tasks');
   }
 
+  const onSubmitHandle = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target)
+    const taskData = updateTask(formData)
 
+    if (title === "Add New Task") {
+      // POST newTask to the server
+      createTask(taskData);
+
+      // Reset the form after submission
+      e.target.reset();
+
+      // Navigate to the tasks page after creating a task
+      navigate('/tasks');
+    } else if (title === "Edit Task") {
+      // PUT editedTask to the server
+      editTask(state, taskData);
+
+      // Reset the form after submission
+      e.target.reset(); 
+
+      // Navigate to the tasks page after editing a task
+      navigate('/tasks');
+    }
+  }
 
   return (
     <div className="task-form">
@@ -58,7 +76,7 @@ const TaskForm = ({ title, submitTitle }) => {
         <div className="input-flex-container">
           <h3>{title}</h3>
         </div>
-        <form method="POST" onSubmit={title == "Edit Task" ? editExistingTask : `${title == "Add New Task" ? createNewTask : undefined }`} ref={formRef}>
+        <form method="POST" onSubmit={onSubmitHandle} ref={formRef}>
           <input
             type="text"
             name="title"

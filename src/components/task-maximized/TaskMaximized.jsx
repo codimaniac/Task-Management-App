@@ -39,9 +39,9 @@ const TaskMaximized = ({id, title, objective, description, checklist, priority, 
         </p>
         <ul>
           {
-            checklist.map(list => {
+            checklist.map((list, key) => {
               return (
-                <li>{list}</li>
+                <li key={key}>{list}</li>
               )
             })
           }

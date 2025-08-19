@@ -104,3 +104,9 @@
     transform: scale(0.95);
     background-color: var(--accent-color);
 }
+
+@media (max-width: 768px) {
+    .task-maximized-container {
+        flex: unset;
+    }
+}

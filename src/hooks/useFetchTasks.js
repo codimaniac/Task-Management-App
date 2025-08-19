@@ -30,19 +30,21 @@ export function useFetchTasks() {
 export function useFetchTask(id) {
   const [task, setTask] = useState({}) 
 
-  fetch(`http://localhost:5000/tasks/${id}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Could not locate resource");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      setTask(data)
-    })
-    .catch((error) => {
-      console.error(error)
-    });
+  if (id!==null) {
+    fetch(`http://localhost:5000/tasks/${id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Could not locate resource");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setTask(data)
+      })
+      .catch((error) => {
+        console.error(error)
+      });
+  }
 
   // Return the tasks
   return [task]

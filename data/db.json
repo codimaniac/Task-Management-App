@@ -26,15 +26,16 @@
         "Draft the meeting agenda",
         "Send out calendar invites"
       ],
-      "priority": "High",
-      "status": "In-progress",
-      "datecreated": "2025-08-14",
+      "priority": "Moderate",
+      "status": "Not Started",
+      "datecreated": "2025-08-19",
       "dueDate": "2023-10-05",
       "dueTime": "10:00",
       "completed": false,
       "id": "2"
     },
     {
+      "id": "3",
       "title": "Conduct user testing",
       "objective": "Test the new features with real users and gather feedback.",
       "description": "Schedule and conduct user testing sessions to evaluate the new features.",
@@ -48,8 +49,7 @@
       "datecreated": "2025-08-14",
       "dueDate": "2023-10-10",
       "dueTime": "15:00",
-      "completed": false,
-      "id": "3"
+      "completed": false
     },
     {
       "id": "4",
@@ -78,16 +78,16 @@
         "Select marketing channels",
         "Set campaign goals"
       ],
-      "priority": "High",
-      "status": "In-progress",
-      "datecreated": "2023-10-05",
+      "priority": "Moderate",
+      "status": "Not Started",
+      "datecreated": "2025-08-18",
       "dueDate": "2023-10-15",
       "dueTime": "09:00",
       "completed": false
     },
     {
-      "id": "57db",
-      "title": "Leg Day Gym Session",
+      "id": "6",
+      "title": "Leg day gym session",
       "objective": "Work on my leg muscles in the gym today",
       "description": "Strengthen and build lower body with squats, lunges, deadlifts, and accessory work. Focus on quads, hamstrings, glutes, and calves. Include warm-up, cool-down, and stretching.",
       "checklist": [
@@ -100,6 +100,24 @@
       "datecreated": "2025-08-14",
       "dueDate": "2025-08-16",
       "dueTime": "07:40",
+      "completed": false
+    },
+    {
+      "id": "c786",
+      "title": "Meet and greet with fans",
+      "objective": "Host a meet and greet for my fans for the 2025 anual convention",
+      "description": "Plan and host a 2025 meet and greet for my fans after the convention which is to be held on 25th August. The event will help promote a good relationship between the team and the fans in Asia. ",
+      "checklist": [
+        "Take pictures with fans",
+        "Sign autograph for fans",
+        "Visit some memorable site in Asia ",
+        "Sign a huge sponsorship deal"
+      ],
+      "priority": "High",
+      "status": "Not Started",
+      "datecreated": "2025-08-19",
+      "dueDate": "2025-08-22",
+      "dueTime": "09:15",
       "completed": false
     }
   ]
