@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './dashboard.css'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -18,13 +18,17 @@ const Dashboard = () => {
   const completedPercentage = Math.round((numOfTaskCompleted/tasks.length) * 100)
   const inProgressPercentage = Math.round((numOfTaskInProgress/tasks.length) * 100)
   const notStartedPercentage = Math.round((numOfTaskNotStarted/tasks.length) * 100)
+  const todaysDate = new Date().toLocaleDateString()
 
+  useEffect(() => {
+    console.log(todaysDate)
+  }, [])
   
 
   return (
     <section className="container">
       <div className="dashboard-welcome">
-        <h1 className='welcome-msg'>Welcome Back, Piastri! 👋</h1>
+        <h1 className='welcome-msg'>Welcome Back, John! 👋</h1>
         <div className="invite-btn"><MdPersonAdd /> Invite</div>
         {/* <InviteUsers /> */}
       </div>

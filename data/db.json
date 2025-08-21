@@ -26,9 +26,9 @@
         "Draft the meeting agenda",
         "Send out calendar invites"
       ],
-      "priority": "Moderate",
+      "priority": "Low",
       "status": "Not Started",
-      "datecreated": "2025-08-19",
+      "datecreated": "2025-08-21",
       "dueDate": "2023-10-05",
       "dueTime": "10:00",
       "completed": false,
@@ -113,7 +113,7 @@
         "Sign a sponsorship deal with Coca-Cola"
       ],
       "priority": "High",
-      "status": "Not Started",
+      "status": "In-progress",
       "datecreated": "2025-08-19",
       "dueDate": "2025-08-22",
       "dueTime": "20:00",

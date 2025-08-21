@@ -1,3 +1,5 @@
+import { API } from "./globalVariables";
+
 // Function to set the new task
 export const updateTask = (formData) => {
     const newTask = {
@@ -45,7 +47,7 @@ export const resetTask = () => {
 
 export const createTask = (newTask) => {
     if (newTask.title !== "") {
-        fetch('http://localhost:5000/tasks', {
+        fetch(`${API}/tasks`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -65,7 +67,7 @@ export const createTask = (newTask) => {
 }
 
 export const editTask = (id, newTask) => {
-    fetch(`http://localhost:5000/tasks/${id}`, {
+    fetch(`${API}/tasks/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -84,7 +86,7 @@ export const editTask = (id, newTask) => {
 }
 
 export const deleteTask = (id) => {
-    fetch(`http://localhost:5000/tasks/${id}`, {
+    fetch(`${API}/tasks/${id}`, {
         method: 'DELETE'
     })
         .then(res => {
@@ -100,7 +102,7 @@ export const deleteTask = (id) => {
 }
 
 export const startTask = (id) => {
-    fetch(`http://localhost:5000/tasks/${id}`, {
+    fetch(`${API}/tasks/${id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
@@ -121,7 +123,7 @@ export const startTask = (id) => {
 }
 
 export const finishTask = (id) => {
-    fetch(`http://localhost:5000/tasks/${id}`, {
+    fetch(`${API}/tasks/${id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'

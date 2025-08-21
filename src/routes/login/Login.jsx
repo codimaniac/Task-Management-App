@@ -11,15 +11,17 @@ const Login = () => {
       <PreviousPage />
       <div className="login-container">
         <div className="login-form">
-          <h1>Login</h1>
+          <h1>Welcome to Taskly</h1>
+          <p className="catch-phrase">Stay sharp, stay Taskly!</p>
+          {/* <h2>Login</h2> */}
           {/* <p>Enter your email and password to access your account</p> */}
           <form method="POST">
-            <label htmlFor="user_email">Email</label>
+            <label htmlFor="user_email">E-mail Address</label>
             <input
               type="email"
               name="user_email"
               id="user_email"
-              placeholder="Enter Username"
+              placeholder="Enter Email"
             />
             <div className="password-container">
               <label htmlFor="user_password">Password</label>
@@ -50,9 +52,9 @@ const Login = () => {
             </span>
           </form>
         </div>
-        <div className="login-image">
+        {/* <div className="login-image">
           <img src={Calendar} alt="Task Brief" />
-        </div>
+        </div> */}
       </div>
       <span className="terms-and-conditions">
         By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}

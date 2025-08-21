@@ -6,8 +6,8 @@
     gap: 1rem;
     min-height: 100vh;
     font-weight: 300;
-    background-color: var(--light-color);
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--light-color);
 }
 
 
@@ -17,30 +17,46 @@
     height: auto;
     border-radius: 14px;
     box-shadow:
-        0 2px 8px 0 rgba(0, 0, 0, 0.07), /* bottom */
-        0 -2px 8px 0 rgba(0, 0, 0, 0.07), /* top */
-        2px 0 8px 0 rgba(0, 0, 0, 0.07), /* right */
-        -2px 0 8px 0 rgba(0, 0, 0, 0.07); /* left */
+        0 2px 8px 0 rgba(0, 0, 0, 0.04), /* bottom */
+        0 -2px 8px 0 rgba(0, 0, 0, 0.04), /* top */
+        2px 0 8px 0 rgba(0, 0, 0, 0.04), /* right */
+        -2px 0 8px 0 rgba(0, 0, 0, 0.04); /* left */
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
     flex: 1;
-    background-color: var(--primary-color);
-    color: var(--light-color);
+    background-color: var(--light-color);
+    color: var(--primary-color);
     padding: 2rem;
-    border-radius: 14px 0 0 14px;
+    border-radius: 8px;
+    width: 50vw;
 }
 
-.login-form > h1, .login-form > p {
+.login-form > h1, .login-form > p, .login-form > h2 {
     text-align: center;
-    margin-bottom: 0.5rem;
 }
 
 .login-form > p {
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-style: italic;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    gap: 5px;
+}
+
+.login-form > p::after {
+    content: "";
+    display: block;
+    width: 5rem;
+    border: 1px solid var(--primary-color);
+}
+
+.login-form > h2 {
+    font-size: 1.2rem;
 }
 
 .login-form input {
@@ -49,12 +65,22 @@
     margin: 10px 0;
     padding: 10px;
     font-size: 0.7rem;
-    border-radius: 10px;
-    border: none;
-    outline: none;
+    border-radius: 8px;
+    border: 1px solid var(--gray-light-color);
     background-color: var(--light-color);
     color: var(--dark-color);
     transition: width 0.3s ease;
+}
+
+.login-form input[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    cursor: pointer;
+}
+
+.login-form input[type="submit"]:hover {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
 }
 
 .login-form input::placeholder {
@@ -65,8 +91,8 @@
     background-color: var(--gray-light-color);
 }
 
-.login-form input:focus {
-    outline: none;
+.login-form input:focus {    
+    outline: 1px solid var(--secondary-color);
 }
 
 .login-form label {
@@ -81,7 +107,7 @@
 
 .password-container > a {
     font-size: 0.7rem;
-    color: var(--light-color);
+    color: var(--accent-color);
 }
 
 .password-container > a:hover {
@@ -92,6 +118,8 @@ label[for="stay_signed_in"] {
     display: flex;
     align-items: center;
     gap: 1rem;
+    width: fit-content;
+    cursor: pointer;
 }
 
 #stay_signed_in {
@@ -104,8 +132,9 @@ label[for="stay_signed_in"] {
 }
 
 .call-to-sign-up a {
-    color: var(--light-color);
+    margin-left: 5px;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .login-image {
@@ -125,6 +154,7 @@ label[for="stay_signed_in"] {
 
 .terms-and-conditions a {
     text-decoration: underline;
+    color: var(--light-color);
 }
 
 @media (max-width: 768px) {

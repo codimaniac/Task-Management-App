@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { API } from '../utils/globalVariables';
 
 export function useFetchTasks() {
   const [tasks, setTasks] = useState([]);
@@ -6,7 +7,7 @@ export function useFetchTasks() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/tasks")
+    fetch(`${API}/tasks`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Could not locate resource");
@@ -31,7 +32,7 @@ export function useFetchTask(id) {
   const [task, setTask] = useState({}) 
 
   if (id!==null) {
-    fetch(`http://localhost:5000/tasks/${id}`)
+    fetch(`${API}/tasks/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Could not locate resource");

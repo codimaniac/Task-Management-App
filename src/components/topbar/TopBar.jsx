@@ -4,6 +4,7 @@ import SideNavToggle from '../side-nav-toggle/SideNavToggle'
 import { FaSearch, FaRegBell } from 'react-icons/fa'
 import { MdAccountCircle } from 'react-icons/md'
 import Notification from '../notification/Notification'
+import { Link } from 'react-router-dom'
 
 const TopBar = ({isOpen, toggleSideNav}) => {
   const [isNotificationVisible, setNotificationVisibility] = useState(false)
@@ -27,7 +28,7 @@ const TopBar = ({isOpen, toggleSideNav}) => {
           <span className='search-icon'><FaSearch color='white'/></span>
         </div> */}
         <div className="profile">
-          <MdAccountCircle className='profile-icon'/>
+          <Link to="/profile"><MdAccountCircle className='profile-icon'/></Link>
         </div>
         <div className="notifications" onClick={toggleNotification}>
           <FaRegBell className='notification-icon' />

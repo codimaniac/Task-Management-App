@@ -10,7 +10,8 @@ const SignUp = () => {
       <PreviousPage />
       <div className="signup-container">
         <div className="signup-form">
-          <h1>SignUp</h1>
+          <h1>Create Taskly Account</h1>
+          <p>Sign up to get started!</p>
           <form method="POST">
             <div className="input-flex-container">
               <div className="input-group">
@@ -32,22 +33,26 @@ const SignUp = () => {
                 />
               </div>
             </div>
-            
-            
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              placeholder="Enter Username"
-            />
-            <label htmlFor="user_email">Email</label>
-            <input
-              type="text"
-              name="user_email"
-              id="user_email"
-              placeholder="Enter Email"
-            />
+            <div className="input-flex-container">
+              <div className="input-group">
+                <label htmlFor="username">Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  placeholder="Enter Username"
+                />
+              </div>
+              <div className="input-group">
+                <label htmlFor="user_email">Email</label>
+                <input
+                  type="text"
+                  name="user_email"
+                  id="user_email"
+                  placeholder="Enter Email"
+                />
+              </div>
+            </div>
             <div className="input-flex-container">
               <div className="input-group">
                 <label htmlFor="user_password">Password</label>
@@ -85,9 +90,9 @@ const SignUp = () => {
             </span>
           </form>
         </div>
-        <div className="signup-image">
+        {/* <div className="signup-image">
           <img src={PersonalData} alt="Task Brief" />
-        </div>
+        </div> */}
       </div>
       <span className="terms-and-conditions">
         By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}

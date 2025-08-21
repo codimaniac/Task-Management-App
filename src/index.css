@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
 
 :root {
-    --primary-color: #290000;
-    --secondary-color: #3e1a1a;
-    --dark-color: #1a1a1a;
-    --light-color: #f0f2f5;
-    --accent-color: #ff6347;
-    --gray-color: #808080;
-    --gray-light-color: #b3b3b3;
-    --gray-lighter-color: #e1e1e1;
-    --red-color: #ff3b30;
-    --orange-color: #ff9500;
-    --green-color: #4cd964;
-    --blue-color: #007aff;
+  --primary-color: #1e293b;      /* Deep Slate (main text / headers) */
+  --secondary-color: #334155;    /* Darker neutral for sidebar / nav */
+  --dark-color: #0f172a;         /* Almost black, for strong contrast */
+  --light-color: #f8fafc;        /* Soft light background */
+  --accent-color: #6366f1;       /* Indigo (main brand accent) */
+  --gray-color: #64748b;         /* Neutral gray text */
+  --gray-light-color: #cbd5e1;   /* Light gray border */
+  --gray-lighter-color: #f1f5f9; /* Background panels */
+  --red-color: #ef4444;          /* Soft red for errors / high priority */
+  --orange-color: #f97316;       /* Warm orange for moderate priority */
+  --green-color: #22c55e;        /* Calm green for success / completed */
+  --blue-color: #3b82f6;         /* Bright blue for in-progress */
 }
 
 * {
