@@ -1,4 +1,3 @@
-import React from 'react'
 import './landing.css'
 import LandingImg from '../../assets/landing-illustration.svg'
 

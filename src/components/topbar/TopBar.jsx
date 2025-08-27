@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './topbar.css'
 import SideNavToggle from '../side-nav-toggle/SideNavToggle'
 import { FaSearch, FaRegBell } from 'react-icons/fa'
@@ -21,7 +21,7 @@ const TopBar = ({isOpen, toggleSideNav}) => {
       <div className="topbar-container">
         <SideNavToggle isOpen={ isOpen } toggleSideNav={ toggleSideNav } />
         <div className="logo">
-          <h1>To-Do List</h1>
+          <h1>Taskly</h1>
         </div>
         {/* <div className="search-bar">
           <input className='search-input' id='search-text' type="text" placeholder="Search..." />

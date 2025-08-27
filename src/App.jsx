@@ -1,7 +1,8 @@
-import { React, useState } from 'react';
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Upcoming, Vital, Login, Dashboard, Tasks, Completed, SignUp, NotFound, Landing, Profile } from './routes';
-import { Layout, TaskForm } from './components';
+import { Layout, ProtectedRoutes, TaskForm } from './components';
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
@@ -17,14 +18,14 @@ function App() {
 
       {/* Routes with layout */}
       <Route element={<Layout isSideNavOpen={isSideNavOpen} toggleNav={toggleNav} />}>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/tasks" element={<Tasks />} />
-        <Route path="/vital" element={<Vital />} />
-        <Route path="/upcoming" element={<Upcoming />} />
-        <Route path="/completed" element={<Completed />} />
-        <Route path="/addtask" element={<TaskForm title="Add New Task" submitTitle="Add Task" />} />
-        <Route path="/edittask" element={<TaskForm title="Edit Task" submitTitle="Update Task" />} />
+        <Route path="/" element={<ProtectedRoutes><Dashboard /></ProtectedRoutes>} />
+        <Route path="/profile" element={<ProtectedRoutes><Profile /></ProtectedRoutes>} />
+        <Route path="/tasks" element={<ProtectedRoutes><Tasks /></ProtectedRoutes>} />
+        <Route path="/vital" element={<ProtectedRoutes><Vital /></ProtectedRoutes>} />
+        <Route path="/upcoming" element={<ProtectedRoutes><Upcoming /></ProtectedRoutes>} />
+        <Route path="/completed" element={<ProtectedRoutes><Completed /></ProtectedRoutes>} />
+        <Route path="/addtask" element={<ProtectedRoutes><TaskForm title="Add New Task" submitTitle="Add Task" /></ProtectedRoutes>} />
+        <Route path="/edittask" element={<ProtectedRoutes><TaskForm title="Edit Task" submitTitle="Update Task" /></ProtectedRoutes>} />
       </Route>
     </Routes>
   );

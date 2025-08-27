@@ -1,4 +1,3 @@
-import React from 'react'
 import './sidenavtoggle.css'
 import { MdMenu, MdClose } from 'react-icons/md'
 

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import { useState, useEffect} from 'react'
 import './dashboard.css'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -9,6 +9,7 @@ import TaskList from '../../components/task-list/TaskList';
 import SortedTask from '../../components/SortedTask';
 import { useFetchTasks } from '../../hooks/useFetchTasks';
 import { countTaskByValue } from '../../utils/taskManager';
+import { auth } from '../../utils/firebaseConfig';
 
 const Dashboard = () => {
   const [tasks, loading, error] = useFetchTasks()
@@ -19,16 +20,31 @@ const Dashboard = () => {
   const inProgressPercentage = Math.round((numOfTaskInProgress/tasks.length) * 100)
   const notStartedPercentage = Math.round((numOfTaskNotStarted/tasks.length) * 100)
   const todaysDate = new Date().toLocaleDateString()
+  const [currentUser, setCurrentUser] = useState(null);
+  const [userInfo, setUserInfo] = useState({
+      fullname: 'Loading...',
+      userEmail: 'Loading...'
+  });
 
   useEffect(() => {
-    console.log(todaysDate)
-  }, [])
+      setCurrentUser(() => {
+          return (auth.currentUser)
+      });
+      if (currentUser) {
+          setUserInfo({
+              fullname: currentUser?.displayName,
+              userEmail: currentUser?.email
+          });
+      }
+      
+      return clearTimeout()
+  }, [currentUser]);
   
 
   return (
     <section className="container">
       <div className="dashboard-welcome">
-        <h1 className='welcome-msg'>Welcome Back, John! 👋</h1>
+        <h1 className='welcome-msg'>Welcome Back, {userInfo.fullname ? userInfo.fullname.split(" ")[0] : userInfo.userEmail.split("@")[0]}! 👋</h1>
         <div className="invite-btn"><MdPersonAdd /> Invite</div>
         {/* <InviteUsers /> */}
       </div>

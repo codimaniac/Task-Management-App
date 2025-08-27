@@ -1,10 +1,32 @@
-import React from 'react'
 import './signup.css'
 import PersonalData from "../../assets/personal-data.svg";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { PreviousPage } from '../../components';
+import { FcGoogle } from 'react-icons/fc';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { handleCreateUser, handleSignInWithGoogle } from '../../utils/firebaseConfig';
 
 const SignUp = () => {
+  const navigate = useNavigate()
+  const formik = useFormik({
+    initialValues: {
+      user_email: "",
+      user_password: "",
+      confirm_user_password: ""
+    },
+    onSubmit: (values) => {
+      const email = values.user_email
+      const password = values.user_password
+
+      handleCreateUser(email, password)
+    }
+  })
+
+  const handleSubmitViaProvider = () => {
+    handleSignInWithGoogle(navigate)
+  }
+
   return (
     <div className="signup">
       <PreviousPage />
@@ -12,8 +34,8 @@ const SignUp = () => {
         <div className="signup-form">
           <h1>Create Taskly Account</h1>
           <p>Sign up to get started!</p>
-          <form method="POST">
-            <div className="input-flex-container">
+          <form method="POST" onSubmit={formik.handleSubmit}>
+            {/* <div className="input-flex-container">
               <div className="input-group">
                 <label htmlFor="first-name">First Name</label>
                 <input
@@ -32,9 +54,9 @@ const SignUp = () => {
                   placeholder="Enter Last Name"
                 />
               </div>
-            </div>
+            </div> */}
             <div className="input-flex-container">
-              <div className="input-group">
+              {/* <div className="input-group">
                 <label htmlFor="username">Username</label>
                 <input
                   type="text"
@@ -42,7 +64,7 @@ const SignUp = () => {
                   id="username"
                   placeholder="Enter Username"
                 />
-              </div>
+              </div> */}
               <div className="input-group">
                 <label htmlFor="user_email">Email</label>
                 <input
@@ -50,6 +72,8 @@ const SignUp = () => {
                   name="user_email"
                   id="user_email"
                   placeholder="Enter Email"
+                  onChange={formik.handleChange}
+                  value={formik.values.user_email}
                 />
               </div>
             </div>
@@ -57,19 +81,23 @@ const SignUp = () => {
               <div className="input-group">
                 <label htmlFor="user_password">Password</label>
                 <input
-                  type="text"
+                  type="password"
                   name="user_password"
                   id="user_password"
                   placeholder="Enter Password"
+                  onChange={formik.handleChange}
+                  value={formik.values.user_password}
                 />
               </div>
               <div className="input-group">
                 <label htmlFor="confirm_user_password">Confirm Password</label>
                 <input
-                  type="text"
+                  type="password"
                   name="confirm_user_password"
                   id="confirm_user_password"
                   placeholder="Confirm Password"
+                  onChange={formik.handleChange}
+                  value={formik.values.confirm_user_password}
                 />
               </div>
             </div>
@@ -82,6 +110,13 @@ const SignUp = () => {
               I agree to all term
             </label>
             <input type="submit" value="Register" />
+            <div className="divider">
+              <span>OR</span>
+            </div>
+            <button type="button" className="google-sign-in" onClick={handleSubmitViaProvider}>
+              <FcGoogle size={18}/>
+              Sign up with Google
+            </button>
             <span className="call-to-login">
               Already have an account? 
               <Link to="/login">

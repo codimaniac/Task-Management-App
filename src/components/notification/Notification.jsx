@@ -1,4 +1,3 @@
-import React from 'react'
 import './notification.css'
 import { MdClose, MdNotifications } from 'react-icons/md'
 

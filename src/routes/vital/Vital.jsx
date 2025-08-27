@@ -1,4 +1,3 @@
-import React from 'react'
 import './vital.css'
 import TaskList from '../../components/task-list/TaskList'
 import TaskMaximized from '../../components/task-maximized/TaskMaximized'

@@ -1,4 +1,3 @@
-import React from 'react'
 import './upcoming.css'
 import { TaskList, TaskMaximized } from '../../components'
 import { useLocation } from 'react-router-dom'

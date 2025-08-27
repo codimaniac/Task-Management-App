@@ -18,6 +18,7 @@
       "completed": true
     },
     {
+      "id": "2",
       "title": "Prepare for the team meeting",
       "objective": "Gather all necessary documents and prepare the agenda.",
       "description": "Ensure all team members are updated on the project status before the meeting.",
@@ -26,15 +27,15 @@
         "Draft the meeting agenda",
         "Send out calendar invites"
       ],
-      "priority": "Low",
-      "status": "Not Started",
-      "datecreated": "2025-08-21",
+      "priority": "Moderate",
+      "status": "In-progress",
+      "datecreated": "2025-08-25",
       "dueDate": "2023-10-05",
       "dueTime": "10:00",
-      "completed": false,
-      "id": "2"
+      "completed": false
     },
     {
+      "id": "3",
       "title": "Conduct user testing",
       "objective": "Test the new features with real users and gather feedback.",
       "description": "Schedule and conduct user testing sessions to evaluate the new features.",
@@ -43,13 +44,12 @@
         "Prepare testing scenarios",
         "Analyze feedback"
       ],
-      "priority": "High",
+      "priority": "Moderate",
       "status": "Not Started",
-      "datecreated": "2025-08-19",
+      "datecreated": "2025-08-21",
       "dueDate": "2023-10-10",
       "dueTime": "15:00",
-      "completed": false,
-      "id": "3"
+      "completed": false
     },
     {
       "id": "4",
@@ -62,7 +62,7 @@
         "Check for broken links"
       ],
       "priority": "Moderate",
-      "status": "Not Started",
+      "status": "In-progress",
       "datecreated": "2023-10-04",
       "dueDate": "2023-10-12",
       "dueTime": "12:00",
@@ -103,6 +103,7 @@
       "completed": false
     },
     {
+      "id": "189e",
       "title": "Meet and greet with fans",
       "objective": "Host a meet and greet for my fans for the 2025 anual convention",
       "description": "Plan and host a 2025 meet and greet for my fans after the convention which is to be held on 25th August. The event will help promote a good relationship between the team and the fans in Asia. ",
@@ -117,8 +118,26 @@
       "datecreated": "2025-08-19",
       "dueDate": "2025-08-22",
       "dueTime": "20:00",
-      "completed": false,
-      "id": "189e"
+      "completed": false
+    },
+    {
+      "id": "f917514d-178b-45d5-b115-d27cb078bf62",
+      "title": "Complete React Dashboard Today",
+      "objective": "Develop and finalize the dashboard UI for task management app.",
+      "description": "Create a fully functional dashboard page with widgets for tasks, stats, and recent activity. Ensure responsiveness and dark/light mode compatibility.",
+      "checklist": [
+        "Set up dashboard route",
+        "Design layout with Tailwind",
+        "Add task summary widget",
+        "Integrate Firebase data",
+        "Implement dark/light toggle"
+      ],
+      "priority": "High",
+      "status": "Not Started",
+      "datecreated": "2025-08-25",
+      "dueDate": "2025-08-28",
+      "dueTime": "18:00",
+      "completed": false
     }
   ]
 }

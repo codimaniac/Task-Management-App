@@ -1,8 +1,10 @@
 import { API } from "./globalVariables";
+import { v4 as uuidv4 } from 'uuid';
 
 // Function to set the new task
-export const updateTask = (formData) => {
+export const createNewTask = (formData) => {
     const newTask = {
+        id: uuidv4(),
         title: formData.get('title'),
         objective: formData.get('objective'),
         description: formData.get('description'),
@@ -16,6 +18,25 @@ export const updateTask = (formData) => {
     }
 
     return newTask;
+}
+
+//function to update an existing task
+export const updateTask = (formData) => {
+    const updatedTask = {
+        id: uuidv4(),
+        title: formData.get('title'),
+        objective: formData.get('objective'),
+        description: formData.get('description'),
+        checklist: formData.get('checklist').split('\n'),
+        priority: formData.get('priority'),
+        status: "Not Started",
+        datecreated: new Date().toISOString().split("T")[0],
+        dueDate: formData.get('dueDateTime').split("T")[0],
+        dueTime: formData.get('dueDateTime').split("T")[1],
+        completed: false
+    }
+
+    return updatedTask;
 }
 
 export const updateEditForm = (form, prevTaskData) => {
@@ -66,13 +87,13 @@ export const createTask = (newTask) => {
     }
 }
 
-export const editTask = (id, newTask) => {
+export const editTask = (id, updatedTask) => {
     fetch(`${API}/tasks/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(newTask)
+        body: JSON.stringify(updatedTask)
     })
     .then(res => {
         if(!res.ok) {

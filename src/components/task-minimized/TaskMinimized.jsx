@@ -1,8 +1,9 @@
-import { React, useState } from 'react'
+import { useState } from 'react'
 import './task-minimized.css'
 import HollowMoreHoriz from '../more-hollow-horiz/HollowMoreHoriz'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { deleteTask, finishTask, startTask } from '../../utils/taskManager'
+import { useRefresh } from '../../contexts/RefreshContext'
 
 const TaskMinimized = ({id, title, objective, priority, status, datecreated, completed }) => {
   const location = useLocation()
@@ -12,14 +13,36 @@ const TaskMinimized = ({id, title, objective, priority, status, datecreated, com
   const ToggleActions = () => {
     setIsOpen(!isOpen)
   }
+  const { triggerRefresh } = useRefresh()
 
-  const handleDelete = () => deleteTask(id)
-  const handleStart = () => startTask(id)
-  const handleFinish = () => finishTask(id)
+  // Close the actions menu if clicked outside
+  window.addEventListener('click', (e) => {
+    if (!e.target.closest('.more-icon') && !e.target.closest('.task-actions')) {
+      setIsOpen(false)
+    }
+  })
+
+  const handleDelete = () => {
+    setIsOpen(false)
+    deleteTask(id)
+    triggerRefresh()
+  }
+  const handleStart = () => {
+    setIsOpen(false)
+    startTask(id)
+    triggerRefresh()
+  }
+  const handleFinish = () => {
+    setIsOpen(false)
+    finishTask(id)
+    triggerRefresh()
+  }
   const handleEdit = () => {
+    setIsOpen(false)
     navigate("/edittask", {state: id})
   }
   const handleDetails = () => {
+    setIsOpen(false)
     navigate(pathname, {state: id})
   }
 
@@ -40,7 +63,7 @@ const TaskMinimized = ({id, title, objective, priority, status, datecreated, com
             <span className="created">Created on: { datecreated }</span>
           </div>
         </div>
-        <div className='more-icon-container' onClick={ ToggleActions }><HollowMoreHoriz /></div>
+        <div className='more-icon-container' onClick={ToggleActions}><HollowMoreHoriz /></div>
         <div className={`task-actions ${ isOpen ? 'flex' : '' }`}>
           {pathname!=='/' && <button className="action" onClick={handleDetails}>Details</button>}
           {!completed && <button className="action" onClick={handleEdit}>Edit</button>}

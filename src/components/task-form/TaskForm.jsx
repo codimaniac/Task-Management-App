@@ -1,6 +1,6 @@
-import { React, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import "./taskform.css";
-import { createTask, editTask, updateEditForm, updateTask } from "../../utils/taskManager";
+import { createNewTask, createTask, editTask, updateEditForm, updateTask } from "../../utils/taskManager";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useFetchTask } from "../../hooks/useFetchTasks";
 
@@ -23,7 +23,7 @@ const TaskForm = ({ title, submitTitle }) => {
   const onSubmitHandle = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target)
-    const taskData = updateTask(formData)
+    const taskData = title === "Add New Task" ? createNewTask(formData) : updateTask(formData)
 
     if (title === "Add New Task") {
       // POST newTask to the server

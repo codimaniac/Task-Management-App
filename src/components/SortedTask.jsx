@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import TaskMinimized from "./task-minimized/TaskMinimized";
 import { useFetchTasks } from '../hooks/useFetchTasks'
 

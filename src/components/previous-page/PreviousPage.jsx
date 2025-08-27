@@ -1,4 +1,3 @@
-import React from 'react'
 import './previouspage.css'
 import { HiArrowLeft } from 'react-icons/hi'
 import { Link, useNavigate} from 'react-router-dom'

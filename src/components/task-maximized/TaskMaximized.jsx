@@ -1,4 +1,3 @@
-import React from 'react'
 import './task-maximized.css'
 import ChecklistImg from '../../assets/checklist.png'
 import { MdDelete, MdEdit } from 'react-icons/md'
