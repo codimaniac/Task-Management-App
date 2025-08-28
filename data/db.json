@@ -27,9 +27,9 @@
         "Draft the meeting agenda",
         "Send out calendar invites"
       ],
-      "priority": "Moderate",
+      "priority": "Low",
       "status": "In-progress",
-      "datecreated": "2025-08-25",
+      "datecreated": "2025-08-28",
       "dueDate": "2023-10-05",
       "dueTime": "10:00",
       "completed": false
@@ -44,7 +44,7 @@
         "Prepare testing scenarios",
         "Analyze feedback"
       ],
-      "priority": "Moderate",
+      "priority": "High",
       "status": "Not Started",
       "datecreated": "2025-08-21",
       "dueDate": "2023-10-10",
@@ -113,9 +113,9 @@
         "Visit some memorable site in Asia ",
         "Sign a sponsorship deal with Coca-Cola"
       ],
-      "priority": "High",
-      "status": "In-progress",
-      "datecreated": "2025-08-19",
+      "priority": "Low",
+      "status": "Not Started",
+      "datecreated": "2025-08-28",
       "dueDate": "2025-08-22",
       "dueTime": "20:00",
       "completed": false

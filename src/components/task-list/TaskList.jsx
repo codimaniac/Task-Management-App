@@ -3,11 +3,18 @@ import { MdToday } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import SortedTask from "../SortedTask";
+import { useRefresh } from "../../contexts/RefreshContext";
+import { useEffect } from "react";
 
 const TaskList = ({ sortby, value }) => {
   const location = useLocation();
   const path = location.pathname;
   const showAddTask = path === "/tasks";
+  const { triggerRefresh } = useRefresh();
+
+  useEffect(() => {
+    triggerRefresh();
+  }, [])
 
   return (
     <div className="to-do-list">

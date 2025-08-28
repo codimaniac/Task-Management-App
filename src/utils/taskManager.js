@@ -23,17 +23,13 @@ export const createNewTask = (formData) => {
 //function to update an existing task
 export const updateTask = (formData) => {
     const updatedTask = {
-        id: uuidv4(),
         title: formData.get('title'),
         objective: formData.get('objective'),
         description: formData.get('description'),
         checklist: formData.get('checklist').split('\n'),
         priority: formData.get('priority'),
-        status: "Not Started",
-        datecreated: new Date().toISOString().split("T")[0],
         dueDate: formData.get('dueDateTime').split("T")[0],
-        dueTime: formData.get('dueDateTime').split("T")[1],
-        completed: false
+        dueTime: formData.get('dueDateTime').split("T")[1]
     }
 
     return updatedTask;
@@ -89,7 +85,7 @@ export const createTask = (newTask) => {
 
 export const editTask = (id, updatedTask) => {
     fetch(`${API}/tasks/${id}`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },

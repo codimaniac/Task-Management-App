@@ -126,6 +126,7 @@ label[for="agree_to_term"] {
     display: inline-block;
     width: auto;
     cursor: pointer;
+    margin: 0;
 }
 
 .call-to-login {

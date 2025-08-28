@@ -33,21 +33,23 @@ export function useFetchTasks() {
 export function useFetchTask(id) {
   const [task, setTask] = useState({}) 
 
-  if (id!==null) {
-    fetch(`${API}/tasks/${id}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Could not locate resource");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setTask(data)
-      })
-      .catch((error) => {
-        console.error(error)
-      });
-  }
+  useEffect(() => {
+    if (id!==null) {
+      fetch(`${API}/tasks/${id}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Could not locate resource");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setTask(data)
+        })
+        .catch((error) => {
+          console.error(error)
+        });
+    }
+  }, [id]);
 
   // Return the tasks
   return [task]
