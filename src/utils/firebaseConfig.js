@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDCOMf4KmVEUnwdndWrplqDAM9Ef2rsf8Y",
@@ -50,15 +50,26 @@ const handleSignInWithGoogle = async (navigate) => {
   }
 }
 
-const handleCreateUser = async (email, password) => {
+const handleCreateUser = async (email, password, navigate) => {
   try {
     const userDetails = await createUserWithEmailAndPassword(auth, email, password)
 
-    console.log(userDetails)
+    console.log("User created succesfully: ", userDetails)
     navigate("/")
   }
   catch (err) {
     console.log("Error creating account: ", err)
+  }
+}
+
+const handleUpateProfile = async (fullname) => {
+  try {
+    await updateProfile(auth.currentUser, {
+      displayName: fullname
+    })
+  }
+  catch (err) {
+    console.error("Error updating profile: ", err)
   }
 }
 
@@ -72,4 +83,4 @@ const handleSignOut = () => {
     })
 }
 
-export { auth, handleSignInWithPassword, handleSignInWithGoogle, handleCreateUser, handleSignOut };
+export { auth, handleSignInWithPassword, handleSignInWithGoogle, handleCreateUser, handleUpateProfile, handleSignOut };

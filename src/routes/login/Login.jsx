@@ -33,7 +33,7 @@ const Login = () => {
         .required("Email is required"),
       user_password: Yup.string()
         .min(4, "Password must be at least 4 character long")
-        .required("Password is equired"),
+        .required("Password is required"),
     }),
   });
 

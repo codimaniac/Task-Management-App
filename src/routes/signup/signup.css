@@ -114,6 +114,14 @@
     justify-content: space-between;
 }
 
+.error {
+    gap: 1rem;
+}
+
+.error-message {
+    flex: 1;
+}
+
 label[for="agree_to_term"] {
     display: flex;
     align-items: center;

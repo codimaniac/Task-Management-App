@@ -1,17 +1,41 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './profile.css'
 import defaultPFP from '../../assets/default-pfp-copy.jpg'
 import { MdEdit, MdLogout, MdSave } from 'react-icons/md'
-import { auth, handleSignOut } from '../../utils/firebaseConfig'
+import { auth, handleSignOut, handleUpateProfile } from '../../utils/firebaseConfig'
+import { updateProfile } from 'firebase/auth'
+import { updatePofileData } from '../../utils/profileManager'
 
 const Profile = () => {
+  const profileForm = useRef(null)
   const [editing, setEditing] = useState(false)
   const [currentUser, setCurrentUser] = useState(null);
   const [userInfo, setUserInfo] = useState({
-      fullname: 'Loading...',
-      userEmail: 'Loading...',
-      profilePic: defaultPFP
+    fullname: 'Loading...',
+    userEmail: 'Loading...',
+    profilePic: defaultPFP
   });
+  const [updatedUserInfo, setUpdatedUserInfo] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    new_password: '',
+    confirm_password: ''
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUpdatedUserInfo({
+      ...updatedUserInfo,
+      [name]: value
+    });
+  };
+
+  useEffect(() => {
+    if (editing) {
+      console.log("Updated User Info:", updatedUserInfo);
+    }
+  }, [updatedUserInfo]);
 
   useEffect(() => {
       setCurrentUser(() => {
@@ -28,6 +52,26 @@ const Profile = () => {
       return clearTimeout()
   }, [currentUser]);
 
+  useEffect(() => {
+    if (editing) {
+      const profile = profileForm.current
+      updatePofileData(profile, userInfo)
+    }
+  }, [editing])
+
+  const saveChanges = () => {
+    const fullname = `${updatedUserInfo.firstname !== "" ? updatedUserInfo.firstname : userInfo.fullname.split(" ")[0]} ${updatedUserInfo.lastname !== "" ? updatedUserInfo.lastname : userInfo.fullname.split(" ")[1]}`.trim();
+    if (fullname !== " " && fullname !== userInfo.fullname) {
+      handleUpateProfile(fullname)
+      setUserInfo(prevState => ({
+        ...prevState,
+        fullname: fullname
+      }));
+
+      setEditing(!editing)
+    }
+  }
+
   return (
     <div className="profile-container">
       <div className="header">        
@@ -39,16 +83,16 @@ const Profile = () => {
           <img src={userInfo.profilePic ? userInfo.profilePic : defaultPFP} alt="Profile" className="profile-pic" />
         </div>
         <div className="profile-info">
-          <div className="profile-details">
+          <div className="profile-details" ref={profileForm}>
             <div className="profile-item">
               <label className="profile-label">First Name:</label>
-              {!editing && <span className="profile-value">{userInfo.fullname ? userInfo.fullname.split(" ")[0] : ""}</span>}
-              {editing && <input type="text" name="firstname" id="firstname" value={userInfo.fullname ? userInfo.fullname.split(" ")[0] : ""}/>}
+              {!editing && <span className="profile-value">{userInfo.fullname ? userInfo.fullname.split(" ")[0] : null}</span>}
+              {editing && <input type="text" name="firstname" id="firstname" onChange={handleChange}/>}
             </div>
             <div className="profile-item">
               <label className="profile-label">Last Name:</label>
-              {!editing && <span className="profile-value">{userInfo.fullname ? userInfo.fullname.split(" ")[1] : ""}</span>}
-              {editing && <input type="text" name="lastname" id="lastname" value={userInfo.fullname ? userInfo.fullname.split(" ")[1] : ""}/>}
+              {!editing && <span className="profile-value">{userInfo.fullname ? userInfo.fullname.split(" ")[1] : null}</span>}
+              {editing && <input type="text" name="lastname" id="lastname" onChange={handleChange}/>}
             </div>
             {/* <div className="profile-item">
               <label className="profile-label">Username:</label>
@@ -58,21 +102,22 @@ const Profile = () => {
             <div className="profile-item">
               <label className="profile-label">Email:</label>
               {!editing && <span className="profile-value">{userInfo.userEmail}</span>}
-              {editing && <input type="email" name="email" id="email" value={userInfo.userEmail}/>}
+              {editing && <input type="email" name="email" id="email"/>}
             </div>
             <div className="profile-item">
               <label className="profile-label">{!editing ? "Password:" : "New Password:"}</label>
               {!editing && <span className="profile-value">**********</span>}
-              {editing && <input type="password" name="oldPassword" id="oldPassword" />}
+              {editing && <input type="password" name="new_password" id="new-password" />}
             </div>
             {editing && <div className="profile-item">
               <label className="profile-label">Confirm Password:</label>
-              <input type="password" name="oldPassword" id="oldPassword" placeholder=""/>
+              <input type="password" name="confirm_password" id="confirm-password" placeholder=""/>
             </div>}
           </div>
           {/* Additional profile content can be added here */}
           <div className="profile-actions">
-            <button className="edit-profile-button" onClick={() => setEditing(!editing)}>{!editing ? <MdEdit /> : <MdSave />} {!editing ? "Edit Profile" : "Save Changes"}</button>
+            {!editing && <button className="edit-profile-button" onClick={() => setEditing(!editing)}><MdEdit /> Edit Profile</button>}
+            {editing && <button className="edit-profile-button" onClick={saveChanges}><MdSave /> Save Changes</button>}
             {!editing && <button className="logout-button" onClick={handleSignOut}><MdLogout /> Logout</button>}
           </div>
         </div>

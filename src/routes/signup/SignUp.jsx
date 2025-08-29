@@ -19,8 +19,15 @@ const SignUp = () => {
       const email = values.user_email
       const password = values.user_password
 
-      handleCreateUser(email, password)
-    }
+      handleCreateUser(email, password, navigate)
+    },
+    validationSchema: Yup.object({
+      user_email: Yup.string().email("Invalid email format").required("Email is required"),
+      user_password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
+      confirm_user_password: Yup.string()
+        .oneOf([Yup.ref('user_password'), null], "Passwords must match")
+        .required("Please confirm your password")
+    })
   })
 
   const handleSubmitViaProvider = () => {
@@ -72,9 +79,13 @@ const SignUp = () => {
                   name="user_email"
                   id="user_email"
                   placeholder="Enter Email"
+                  onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   value={formik.values.user_email}
                 />
+                {formik.touched.user_email && formik.errors.user_email ? (
+                  <div className="error-message">{formik.errors.user_email}</div>
+                ) : null} 
               </div>
             </div>
             <div className="input-flex-container">
@@ -85,6 +96,7 @@ const SignUp = () => {
                   name="user_password"
                   id="user_password"
                   placeholder="Enter Password"
+                  onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   value={formik.values.user_password}
                 />
@@ -96,10 +108,19 @@ const SignUp = () => {
                   name="confirm_user_password"
                   id="confirm_user_password"
                   placeholder="Confirm Password"
+                  onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   value={formik.values.confirm_user_password}
                 />
               </div>
+            </div>
+            <div className="input-flex-container error">
+              {formik.touched.user_password && formik.errors.user_password ? (
+                <div className="error-message">{formik.errors.user_password}</div>
+              ) : null}
+              {formik.values.user_password && formik.touched.confirm_user_password && formik.errors.confirm_user_password ? (
+                <div className="error-message">{formik.errors.confirm_user_password}</div>
+              ) : null}
             </div>
             <label htmlFor="agree_to_term">
               <input
