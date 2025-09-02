@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import "./taskform.css";
-import { createNewTask, createTask, createTaskInFirestore, editTask, updateEditForm, updateTask } from "../../utils/taskManager";
+import { createNewTask, createTask, editTask, updateEditForm, updateTask } from "../../utils/taskManager";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useFetchTask } from "../../hooks/useFetchTasks";
 
@@ -27,14 +27,13 @@ const TaskForm = ({ title, submitTitle }) => {
 
     if (title === "Add New Task") {
       // POST newTask to the server
-      // createTask(taskData);
-      createTaskInFirestore(taskData);
+      createTask(taskData);
 
       // Reset the form after submission
-      // e.target.reset();
+      e.target.reset();
 
       // Navigate to the tasks page after creating a task
-      // navigate('/tasks');
+      navigate('/tasks');
     } else if (title === "Edit Task") {
       // PUT editedTask to the server
       editTask(state, taskData);

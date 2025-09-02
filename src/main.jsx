@@ -6,9 +6,11 @@ import App from './App.jsx'
 import { RefreshProvider } from './contexts/RefreshContext.jsx'
 
 createRoot(document.getElementById('root')).render(
+  <StrictMode>
     <BrowserRouter>
       <RefreshProvider>
         <App />
       </RefreshProvider>
     </BrowserRouter>
+  </StrictMode>
 )

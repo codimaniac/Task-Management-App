@@ -1,14 +1,10 @@
 import { API } from "./globalVariables";
 import { v4 as uuidv4 } from 'uuid';
-import { auth, db } from "./firebaseConfig";
-import { doc, setDoc, addDoc, collection, updateDoc } from "firebase/firestore";
-
-const userId = auth.currentUser ? auth.currentUser.uid : null;
 
 // Function to set the new task
 export const createNewTask = (formData) => {
     const newTask = {
-        // id: uuidv4(),
+        id: uuidv4(),
         title: formData.get('title'),
         objective: formData.get('objective'),
         description: formData.get('description'),
@@ -66,22 +62,6 @@ export const resetTask = () => {
     return newTask;
 }
 
-// function to create task in firestore
-
-export const createTaskInFirestore = async (newTask) => {
-    try {
-        if (userId !== null) {
-            console.log("Creating task in Firestore: ", newTask);
-            await addDoc(collection(db, "users", userId, "tasks"), newTask);
-            console.log("Task created in Firestore with ID: ", newTask.title);
-        }
-    } catch (error) {
-        console.error("Error adding document: ", error.message);
-    }
-}
-
-// CRUD operations for tasks using REST API
-
 export const createTask = (newTask) => {
     if (newTask.title !== "") {
         fetch(`${API}/tasks`, {
@@ -100,18 +80,6 @@ export const createTask = (newTask) => {
             })
             .then(data => console.log("Task created:", data))
             .catch(error => console.error("Error creating task:", error));
-    }
-}
-
-// Edit task in firestore 
-
-export const updateTaskInFirestore = async (id, updatedTask) => {
-    try {
-        await updateDoc(collection(db, userId, "tasks", id), updatedTask)
-        console.log("Task updated successfully in Firestore!")
-    }
-    catch (err) {
-        console.log("Error updating task: ", err)
     }
 }
 

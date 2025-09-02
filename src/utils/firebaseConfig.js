@@ -1,6 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 
 const firebaseConfig = {
@@ -16,21 +15,12 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 export const errorMessage = ""
 
 const handleSignInWithPassword = async (email, password, toast, navigate) => {
   try {
     const userDetails = await signInWithEmailAndPassword(auth, email, password)
-
-    // create a user in firestore if not exists
-    const userDocRef = doc(db, "users", userDetails.user.uid);
-    await setDoc(userDocRef, {
-      fullname: userDetails.user.displayName,
-      email: userDetails.user.email,
-      profilePic: userDetails.user.photoURL
-    }, { merge: true });
     
     console.log("Signed in with password: ", userDetails.user.displayName)
     navigate("/");
@@ -52,15 +42,7 @@ const handleSignInWithGoogle = async (navigate) => {
   try {
     const userDetails = await signInWithPopup(auth, provider)
 
-    // create a user in firestore if not exists
-    const userDocRef = doc(db, "users", userDetails.user.uid);
-    await setDoc(userDocRef, {
-      fullname: userDetails.user.displayName,
-      email: userDetails.user.email,
-      profilePic: userDetails.user.photoURL
-    }, { merge: true });
-
-    console.log("Signed In with Google: ", userDetails.user.uid)
+    console.log("Signed In with Google: ", auth.displayName)
 
     navigate("/");
   } catch (err) {
@@ -71,14 +53,6 @@ const handleSignInWithGoogle = async (navigate) => {
 const handleCreateUser = async (email, password, navigate) => {
   try {
     const userDetails = await createUserWithEmailAndPassword(auth, email, password)
-
-    // create a user in firestore if not exists
-    const userDocRef = doc(db, "users", userDetails.user.uid);
-    await setDoc(userDocRef, {
-      fullname: userDetails.user.displayName,
-      email: userDetails.user.email,
-      profilePic: userDetails.user.photoURL
-    }, { merge: true });
 
     console.log("User created succesfully: ", userDetails)
     navigate("/")
@@ -109,4 +83,4 @@ const handleSignOut = () => {
     })
 }
 
-export { auth, db, handleSignInWithPassword, handleSignInWithGoogle, handleCreateUser, handleUpateProfile, handleSignOut };
+export { auth, handleSignInWithPassword, handleSignInWithGoogle, handleCreateUser, handleUpateProfile, handleSignOut };

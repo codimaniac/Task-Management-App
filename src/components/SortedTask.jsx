@@ -4,7 +4,6 @@ import { useFetchTasks } from '../hooks/useFetchTasks'
 
 const SortedTask = ({ sortby, value }) => {
   const [tasks, loading, error] = useFetchTasks();
-  const [filterCount, setFilterCount] = useState(0)
 
   return (
     <div className='sorted-list'>
@@ -13,7 +12,6 @@ const SortedTask = ({ sortby, value }) => {
         {tasks.map((task) => {
             //check if task[sortby] equals value
             if (task[sortby] == value) {
-              setFilterCount(filterCount + 1)
               return (
                   <TaskMinimized
                   key={task.id}
@@ -28,7 +26,7 @@ const SortedTask = ({ sortby, value }) => {
               )
             }
         })}
-        {filterCount === 0 && !loading && !error && <p className="default-msg">No tasks available.</p>}
+        {tasks.length === 0 && !loading && !error && <p className="default-msg">No tasks available.</p>}
     </div>
   )
 }
