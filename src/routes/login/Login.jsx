@@ -41,8 +41,6 @@ const Login = () => {
     handleSignInWithGoogle(navigate)
   }
 
-  console.log(formik.errors)
-
   return (
     <div className="login">
       <PreviousPage />
