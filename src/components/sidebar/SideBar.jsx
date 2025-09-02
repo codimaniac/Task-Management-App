@@ -22,7 +22,7 @@ const SideBar = ({ isOpen, toggleSideNav }) => {
             setCurrentUser(() => {
                 return (auth.currentUser)
             });
-        }, 1000);
+        }, 2000);
         if (currentUser) {
             setUserInfo({
                 fullname: currentUser?.displayName,

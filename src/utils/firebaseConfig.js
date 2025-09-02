@@ -110,4 +110,4 @@ const handleSignOut = () => {
     })
 }
 
-export { auth, handleSignInWithPassword, handleSignInWithGoogle, handleCreateUser, handleUpateProfile, handleSignOut };
+export { auth, db, handleSignInWithPassword, handleSignInWithGoogle, handleCreateUser, handleUpateProfile, handleSignOut };
