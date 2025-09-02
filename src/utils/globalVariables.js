@@ -1,1 +1,1 @@
-export const API = "https://my-json-server.typicode.com/codimaniac/taskdb"
+export const API = "http://localhost:5000"

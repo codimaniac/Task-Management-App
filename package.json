@@ -12,7 +12,7 @@
     "start": "concurrently -n \"CLIENT,SERVER\" -c \"cyan,green\" \"npm run dev\" \"npm run server\""
   },
   "dependencies": {
-    "firebase": "^12.1.0",
+    "firebase": "^12.2.1",
     "formik": "^2.4.6",
     "react": "^19.1.0",
     "react-circular-progressbar": "^2.2.0",
