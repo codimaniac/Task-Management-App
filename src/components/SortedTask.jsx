@@ -10,7 +10,7 @@ const SortedTask = ({ sortby, value }) => {
     if (!loading && !error) {
       setFilteredTasks(tasks.filter(task => task[sortby] == value));
     }
-  }, [tasks, loading, error]); 
+  }, [tasks, loading, error]);
 
   return (
     <div className='sorted-list'>
