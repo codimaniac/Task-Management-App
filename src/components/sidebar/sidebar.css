@@ -33,6 +33,7 @@
     height: 86px;
     border: 1.5px solid var(--light-color);
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .account-name {

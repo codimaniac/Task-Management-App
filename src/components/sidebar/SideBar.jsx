@@ -27,7 +27,7 @@ const SideBar = ({ isOpen, toggleSideNav }) => {
             setUserInfo({
                 fullname: currentUser?.displayName,
                 userEmail: currentUser?.email,
-                profilePic: currentUser.photoURL
+                profilePic: currentUser?.photoURL
             });
         }
         

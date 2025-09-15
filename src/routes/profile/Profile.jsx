@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import './profile.css'
 import defaultPFP from '../../assets/default-pfp-copy.jpg'
-import { MdEdit, MdLogout, MdSave } from 'react-icons/md'
+import { MdEdit, MdLogout, MdPhotoCamera, MdSave } from 'react-icons/md'
 import { useFormik } from 'formik'
 import * as Yup from "yup"
 import { auth, handleSignOut, handleUpateProfile, handleUpdatePassword } from '../../utils/firebaseConfig'
@@ -51,12 +51,12 @@ const Profile = () => {
     });
   };
 
-  useEffect(() => {
-    if (!editing) {
-      console.log("Updated User Info:", updatedUserInfo);
-      console.log("Formik Values:", formik.values);
-    }
-  }, [editing, formik.values]);
+  // useEffect(() => {
+  //   if (!editing) {
+  //     console.log("Updated User Info:", updatedUserInfo);
+  //     console.log("Formik Values:", formik.values);
+  //   }
+  // }, [editing, formik.values]);
 
   useEffect(() => {
       setCurrentUser(() => {
@@ -95,6 +95,56 @@ const Profile = () => {
     setEditing(!editing)
   }
 
+  const uploadPics = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    try {
+      // Step 1: show a temporary preview while uploading
+      const tempUrl = URL.createObjectURL(file);
+      setUserInfo((prevState) => ({
+        ...prevState,
+        profilePic: tempUrl
+      }));
+
+      // Step 2: prepare FormData for ImgBB
+      const formData = new FormData();
+      formData.append("image", file);
+
+      // Replace with your ImgBB API key
+      const API_KEY = "6e4960bf069168205b9c5ac4b723fb58";
+
+      // Step 3: upload to ImgBB
+      const response = await fetch(`https://api.imgbb.com/1/upload?key=${API_KEY}`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to upload image to ImgBB");
+      }
+
+      const data = await response.json();
+      const uploadedUrl = data.data.url; // ImgBB returns the hosted image URL
+
+      console.log("Uploaded image URL:", uploadedUrl);
+
+      // Step 4: update Firebase Auth profile with permanent URL
+      await updateProfile(auth.currentUser, { photoURL: uploadedUrl });
+
+      // Step 5: update state with permanent URL
+      setUserInfo((prevState) => ({
+        ...prevState,
+        profilePic: uploadedUrl
+      }));
+
+      console.log("Profile picture updated successfully in Firebase.");
+    } catch (error) {
+      console.error("Error uploading/updating profile picture:", error);
+    }
+  };
+
+
   return (
     <div className="profile-container">
       <div className="header">        
@@ -104,6 +154,10 @@ const Profile = () => {
       <div className="profile-content">
         <div className="profile-image">
           <img src={userInfo.profilePic ? userInfo.profilePic : defaultPFP} alt="Profile" className="profile-pic" />
+          <input type="file" id="profile-pic-input" style={{ display: 'none' }} accept="image/*" onChange={uploadPics}/>
+          {editing && <label htmlFor="profile-pic-input" className="upload-icon">
+            <MdEdit className="camera-icon" title="Change Profile Picture" size={24}/>
+          </label>}
         </div>
         <div className="profile-info">
           <div className="profile-details" ref={profileForm}>
