@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore, getDoc, setDoc, doc } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword, updateProfile, updatePassword, EmailAuthProvider, reauthenticateWithCredential, signOut } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -100,6 +100,25 @@ const handleUpateProfile = async (fullname) => {
   }
 }
 
+const handleUpdatePassword = async (currentPassword, newPassword) => {
+  try {
+    const user = auth.currentUser
+    const credential = EmailAuthProvider.credential(
+      user.email, 
+      currentPassword
+    )
+
+    await reauthenticateWithCredential(user, credential)
+
+    await updatePassword(user, newPassword)
+
+    console.log("Password updated successfully!")
+  }
+  catch (err) {
+    console.error("Error updating password: ", err)
+  }
+}
+
 const handleSignOut = () => {
   signOut(auth)
     .then(() => {
@@ -110,4 +129,4 @@ const handleSignOut = () => {
     })
 }
 
-export { auth, db, handleSignInWithPassword, handleSignInWithGoogle, handleCreateUser, handleUpateProfile, handleSignOut };
+export { auth, db, handleSignInWithPassword, handleSignInWithGoogle, handleCreateUser, handleUpateProfile, handleUpdatePassword, handleSignOut };
