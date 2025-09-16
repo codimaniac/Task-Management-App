@@ -11,7 +11,7 @@ const Upcoming = () => {
     <div className="container">
       <h1>Upcoming Task</h1>
       <div className="content">
-        <TaskList />
+        <TaskList sortby="completed" value={false}/>
         <TaskMaximized
           id = {task.id}
           title = {task.title}
