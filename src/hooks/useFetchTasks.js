@@ -1,29 +1,35 @@
 import { useState, useEffect } from 'react';
-import { API } from '../utils/globalVariables';
 import { useRefresh } from '../contexts/RefreshContext';
+import { collection, getDocs, getDoc, doc } from 'firebase/firestore';
+import { auth, db } from '../utils/firebaseConfig';
 
 export function useFetchTasks() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { refreshFlag } = useRefresh();
+  const userID = auth.currentUser.uid
 
   useEffect(() => {
-    fetch(`${API}/tasks`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Could not locate resource");
+    const fetchTasks = async () => {
+      try {
+        if (userID) {
+          const docsSnapshot = await getDocs(collection(db, "users", userID, "tasks"))
+          setLoading(false)
+          setTasks(docsSnapshot.docs.map(doc => ({ 
+            id: doc.id, 
+            ...doc.data()
+          })))
         }
-        return response.json();
-      })
-      .then((data) => {
-        setTasks(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setLoading(false);
-      });
+      }
+      catch (err) {
+        setLoading(false)
+        setError(err.message)
+        console.error("Error fetching tasks: ", err)
+      }
+    }
+
+    fetchTasks()
   }, [refreshFlag]);
 
   // Return the tasks, loading state, and error state
@@ -31,26 +37,33 @@ export function useFetchTasks() {
 }
 
 export function useFetchTask(id) {
-  const [task, setTask] = useState({}) 
+  const [task, setTask] = useState({})
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const userID = auth.currentUser.uid
 
   useEffect(() => {
     if (id!==null) {
-      fetch(`${API}/tasks/${id}`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Could not locate resource");
+      const fetchTask = async () => {
+        try {
+          if (userID) {
+            const docSnapshot = await getDoc(doc(db, "users", userID, "tasks", id))
+            setLoading(false)
+            setTask({id: docSnapshot.id, ...docSnapshot.data()})
           }
-          return response.json();
-        })
-        .then((data) => {
-          setTask(data)
-        })
-        .catch((error) => {
-          console.error(error)
-        });
+        }
+        catch (err) {
+          setLoading(false)
+          setError(err.message)
+          console.error("Error fetching task: ", err)
+        }
+      }
+
+      fetchTask()
     }
+
   }, [id]);
 
   // Return the tasks
-  return [task]
+  return [task, loading, error]
 }

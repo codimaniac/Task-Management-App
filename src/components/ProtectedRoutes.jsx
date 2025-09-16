@@ -13,6 +13,7 @@ const ProtectedRoutes = ({children}) => {
     return <Navigate to="/login" />
   }
 
+  // console.log(user)
   return children
 }
 

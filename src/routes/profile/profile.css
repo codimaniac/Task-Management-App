@@ -40,6 +40,7 @@
   flex: 1;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .profile-pic {
@@ -47,6 +48,24 @@
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.camera-icon {
+  position: absolute;
+  bottom: 0;
+  right: 40%;
+  background-color: var(--light-color);
+  border-radius: 8px;
+  padding: 5px;
+  cursor: pointer;
+  border: 1px solid var(--gray-light-color);
+  color: var(--secondary-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.camera-icon:hover {
+  background-color: var(--secondary-color);
+  color: var(--light-color);
 }
 
 .profile-info {
@@ -132,6 +151,10 @@
   color: var(--light-color);
 }
 
+.text-right {
+  text-align: right;
+}
+
 @media (max-width: 768px) {
   .profile-container {
     padding: 1rem;
@@ -145,6 +168,10 @@
   .profile-image {
     justify-content: center;
     margin-bottom: 20px;
+  }
+
+  .camera-icon {
+    right: 10%;
   }
 
   .profile-info {

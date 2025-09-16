@@ -5,13 +5,13 @@ import { useFetchTask } from '../../hooks/useFetchTasks'
 
 const Upcoming = () => {
   const {state} = useLocation()
-  const [task] = useFetchTask(state)
+  const [task, loading, error] = useFetchTask(state)
   
   return (
     <div className="container">
       <h1>Upcoming Task</h1>
       <div className="content">
-        <TaskList />
+        <TaskList sortby="completed" value={false}/>
         <TaskMaximized
           id = {task.id}
           title = {task.title}
@@ -22,7 +22,9 @@ const Upcoming = () => {
           status = {task.status}
           datecreated = {task.datecreated}
           dueDate = {task.dueDate}
-          dueTime = {task.dueTime}        
+          dueTime = {task.dueTime}
+          loading = {loading}
+          error = {error}                
         />
       </div>
     </div>

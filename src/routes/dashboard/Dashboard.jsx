@@ -45,8 +45,7 @@ const Dashboard = () => {
     <section className="container">
       <div className="dashboard-welcome">
         <h1 className='welcome-msg'>Welcome Back, {userInfo.fullname ? userInfo.fullname.split(" ")[0] : userInfo.userEmail.split("@")[0]}! 👋</h1>
-        <div className="invite-btn"><MdPersonAdd /> Invite</div>
-        {/* <InviteUsers /> */}
+        {/* <div className="invite-btn"><MdPersonAdd /> Invite</div> */}
       </div>
       <div className="content">
         <TaskList />

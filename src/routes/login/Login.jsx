@@ -32,7 +32,7 @@ const Login = () => {
         .email("Invalid email address")
         .required("Email is required"),
       user_password: Yup.string()
-        .min(4, "Password must be at least 4 character long")
+        .min(6, "Password must be at least 6 character long")
         .required("Password is required"),
     }),
   });
@@ -40,8 +40,6 @@ const Login = () => {
   const handleSubmitViaProvider = () => {
     handleSignInWithGoogle(navigate)
   }
-
-  console.log(formik.errors)
 
   return (
     <div className="login">

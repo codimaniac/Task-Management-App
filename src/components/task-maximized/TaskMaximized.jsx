@@ -2,11 +2,23 @@ import './task-maximized.css'
 import ChecklistImg from '../../assets/checklist.png'
 import { MdDelete, MdEdit } from 'react-icons/md'
 
-const TaskMaximized = ({id, title, objective, description, checklist, priority, status, datecreated, dueDate, dueTime}) => {
-  if (!title) {
+const TaskMaximized = ({id, title, objective, description, checklist, priority, status, datecreated, dueDate, dueTime, loading, error}) => {
+  if (!id) {
     return(
       <div className="task-maximized-container" style={{alignItems: "center", justifyContent: "center", height: "50vh"}}>
         <p className="default-content">Click on Details to view more task details</p>
+      </div>
+    )
+  } else if (id && loading && !error) {
+    return (
+      <div className="task-maximized-container" style={{alignItems: "center", justifyContent: "center", height: "50vh"}}>
+        <p className="loading-task">Loading Tasks....</p>
+      </div>
+    )
+  } else if (id && !loading && error) {
+    return (
+      <div className="task-maximized-container" style={{alignItems: "center", justifyContent: "center", height: "50vh"}}>
+        <p className="error-loading">Error: {error}</p>
       </div>
     )
   }

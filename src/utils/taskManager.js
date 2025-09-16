@@ -1,5 +1,7 @@
 import { API } from "./globalVariables";
 import { v4 as uuidv4 } from 'uuid';
+import { auth, db } from "./firebaseConfig";
+import { doc, setDoc, deleteDoc } from "firebase/firestore";
 
 // Function to set the new task
 export const createNewTask = (formData) => {
@@ -64,101 +66,54 @@ export const resetTask = () => {
 
 export const createTask = (newTask) => {
     if (newTask.title !== "") {
-        fetch(`${API}/tasks`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newTask)
-        })
-            .then(res => {
-                if(!res.ok) {
-                    throw new Error("Couldn't create task")
-                }
-                console.log("Task Created Successfully!")
-                return res.json()
-            })
-            .then(data => console.log("Task created:", data))
-            .catch(error => console.error("Error creating task:", error));
+        const userID = auth.currentUser.uid
+
+        setDoc(doc(db, "users", userID, "tasks", newTask.id), newTask)
+        .catch((error) => {
+            console.error("Error adding document: ", error);
+        });
     }
 }
 
 export const editTask = (id, updatedTask) => {
-    fetch(`${API}/tasks/${id}`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(updatedTask)
-    })
-    .then(res => {
-        if(!res.ok) {
-            throw new Error("Couldn't fetch task")
-        }
-        console.log("Task edited successfully!")
-        return res.json()
-    })
-    .then(data => console.log("Edited Task: ", data))
-    .catch(error => console.error(error))
+    const userID = auth.currentUser.uid
+
+    setDoc(doc(db, "users", userID, "tasks", id), updatedTask, { merge: true})
+    .catch((error) => {
+        console.error("Error updating document: ", error);
+    });   
 }
 
 export const deleteTask = (id) => {
-    fetch(`${API}/tasks/${id}`, {
-        method: 'DELETE'
-    })
-        .then(res => {
-            if (!res.ok) {
-                throw new Error("Failed to delete task")
-            }
-            
-            console.log('Task deleted successfully!')
-            return res.json()
-        })
-        .then(data => console.log("Deleted Task: ", data))
-        .catch(error => console.error("Error delating task: ", error))
+    const userID = auth.currentUser.uid
+
+    deleteDoc(doc(db, "users", userID, "tasks", id))
+    .catch((error) => {
+        console.error("Error removing document: ", error);
+    });
 }
 
 export const startTask = (id) => {
-    fetch(`${API}/tasks/${id}`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            status: "In-progress"
-        })
-    })
-        .then(res => {
-            if (!res.ok) {
-                throw new Error("Couldn't update task data")
-            }
-            
-            return res.json()
-        })
-        .then(data => console.log("Started ", data.title))
-        .catch(error => console.error(error))
+    const userID = auth.currentUser.uid
+
+    setDoc(doc(db, "users", userID, "tasks", id), {
+        status: "In-progress"
+    }, { merge: true})
+    .catch((error) => {
+        console.error("Error updating document: ", error);
+    });
 }
 
 export const finishTask = (id) => {
-    fetch(`${API}/tasks/${id}`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            status: "Completed",
-            completed: true
-        })
-    })
-        .then(res => {
-            if (!res.ok) {
-                throw new Error("Couldn't update task data")
-            }
+    const userID = auth.currentUser.uid
 
-            return res.json()
-        })
-        .then(data => console.log("Finished ", data.title))
-        .catch(error => console.error(error))
+    setDoc(doc(db, "users", userID, "tasks", id), {
+        status: "Completed",
+        completed: true
+    }, { merge: true })
+    .catch((error) => {
+        console.error("Error updating document: ", error);
+    });
 }
 
 export const countTaskByValue = (tasks, sortBy, value) => {

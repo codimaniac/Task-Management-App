@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
+import { getFirestore, getDoc, setDoc, doc } from "firebase/firestore";
+import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword, updateProfile, updatePassword, EmailAuthProvider, reauthenticateWithCredential, signOut } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -15,34 +16,59 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 export const errorMessage = ""
+
+const createUserDoc = async (user) => {
+  try {
+    const userRef = doc(db, "users", user.uid)
+    const docSnap = await getDoc(userRef)
+
+    if (!docSnap) {
+      await setDoc(userRef, {
+        photourl: user.photoURL,
+        fullname: user.displayName,
+        email: user.email
+      }, { merge: true })
+    }
+  }
+  catch (error) {
+    console.error("Error creating user document: ", error)
+  }
+}
 
 const handleSignInWithPassword = async (email, password, toast, navigate) => {
   try {
     const userDetails = await signInWithEmailAndPassword(auth, email, password)
+    createUserDoc(userDetails.user)
     
     console.log("Signed in with password: ", userDetails.user.displayName)
     navigate("/");
   } catch (err) {
-    toast.error('Invalid login credentials', {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
+    if (err.code === 'auth/invalid-credential') {
+      toast.error('Invalid login credentials', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
       });
+    } else {
+      console.error("Error signing in with password: ", err)
+    }    
   }
 }
 
 const handleSignInWithGoogle = async (navigate) => {
   try {
     const userDetails = await signInWithPopup(auth, provider)
+    createUserDoc(userDetails.user)
 
-    console.log("Signed In with Google: ", auth.displayName)
+    console.log("Signed In with Google: ", userDetails.user.displayName)
 
     navigate("/");
   } catch (err) {
@@ -53,6 +79,7 @@ const handleSignInWithGoogle = async (navigate) => {
 const handleCreateUser = async (email, password, navigate) => {
   try {
     const userDetails = await createUserWithEmailAndPassword(auth, email, password)
+    createUserDoc(userDetails.user)
 
     console.log("User created succesfully: ", userDetails)
     navigate("/")
@@ -73,6 +100,25 @@ const handleUpateProfile = async (fullname) => {
   }
 }
 
+const handleUpdatePassword = async (currentPassword, newPassword) => {
+  try {
+    const user = auth.currentUser
+    const credential = EmailAuthProvider.credential(
+      user.email, 
+      currentPassword
+    )
+
+    await reauthenticateWithCredential(user, credential)
+
+    await updatePassword(user, newPassword)
+
+    console.log("Password updated successfully!")
+  }
+  catch (err) {
+    console.error("Error updating password: ", err)
+  }
+}
+
 const handleSignOut = () => {
   signOut(auth)
     .then(() => {
@@ -83,4 +129,4 @@ const handleSignOut = () => {
     })
 }
 
-export { auth, handleSignInWithPassword, handleSignInWithGoogle, handleCreateUser, handleUpateProfile, handleSignOut };
+export { auth, db, handleSignInWithPassword, handleSignInWithGoogle, handleCreateUser, handleUpateProfile, handleUpdatePassword, handleSignOut };

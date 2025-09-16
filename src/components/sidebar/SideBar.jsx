@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './sidebar.css'
 import { auth } from '../../utils/firebaseConfig'
+import { useAuthState } from '../../hooks/useAuthState'
 import defaultPFP from '../../assets/default-pfp-copy.jpg'
 import { MdDashboard, MdLogout, MdOutlineChecklist, MdOutlineDone, MdOutlineUpcoming } from 'react-icons/md'
 import { Link, useLocation } from 'react-router-dom'
@@ -10,6 +11,7 @@ import { handleSignOut } from '../../utils/firebaseConfig'
 const SideBar = ({ isOpen, toggleSideNav }) => {
     const location = useLocation()
     const pathname = location.pathname
+    const [user, loading] = useAuthState(auth)
     const [currentUser, setCurrentUser] = useState(null);
     const [userInfo, setUserInfo] = useState({
         fullname: 'Loading...',
@@ -19,20 +21,18 @@ const SideBar = ({ isOpen, toggleSideNav }) => {
 
     useEffect(() => {
         setTimeout(() => {
-            setCurrentUser(() => {
-                return (auth.currentUser)
-            });
-        }, 1000);
+            setCurrentUser(() => user);
+        }, 2000);
         if (currentUser) {
             setUserInfo({
                 fullname: currentUser?.displayName,
                 userEmail: currentUser?.email,
-                profilePic: currentUser.photoURL
+                profilePic: currentUser?.photoURL
             });
         }
         
         return clearTimeout()
-    }, [currentUser]);
+    }, [currentUser, loading, user, userInfo.profilePic, userInfo.fullname, userInfo.userEmail]);
 
     return (
         <aside className={`sidebar ${isOpen ? 'active' : ''}`}>

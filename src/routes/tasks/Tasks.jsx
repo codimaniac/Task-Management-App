@@ -5,7 +5,7 @@ import { useFetchTask } from '../../hooks/useFetchTasks'
 
 const Tasks = () => {
   const {state} = useLocation()
-  const [task] = useFetchTask(state)
+  const [task, loading, error] = useFetchTask(state)
   
   return (
     <div className="container">
@@ -22,7 +22,9 @@ const Tasks = () => {
           status = {task.status}
           datecreated = {task.datecreated}
           dueDate = {task.dueDate}
-          dueTime = {task.dueTime}        
+          dueTime = {task.dueTime}
+          loading = {loading}
+          error = {error}        
         />
       </div>
     </div>
