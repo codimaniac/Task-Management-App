@@ -112,7 +112,7 @@ const Profile = () => {
       formData.append("image", file);
 
       // Replace with your ImgBB API key
-      const API_KEY = "6e4960bf069168205b9c5ac4b723fb58";
+      const API_KEY = import.meta.env.VITE_IMGBB_API_KEY;
 
       // Step 3: upload to ImgBB
       const response = await fetch(`https://api.imgbb.com/1/upload?key=${API_KEY}`, {

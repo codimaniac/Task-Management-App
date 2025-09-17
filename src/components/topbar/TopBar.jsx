@@ -30,20 +30,20 @@ const TopBar = ({isOpen, toggleSideNav}) => {
         <div className="profile">
           <Link to="/profile"><MdAccountCircle className='profile-icon'/></Link>
         </div>
-        <div className="notifications" onClick={toggleNotification}>
+        {/* <div className="notifications" onClick={toggleNotification}>
           <FaRegBell className='notification-icon' />
           <span className="notification-count">3</span>
-        </div>
+        </div> */}
         <div className="date">
           <span className="day">{ dayName }</span>
           <span className="date">{ formattedDate }</span>
         </div>
-        <div className={`notification-list ${ isNotificationVisible ? 'show-notification' : '' }`}>
-          {/* <p className="no-notification">No available notification</p> */}
+        {/* <div className={`notification-list ${ isNotificationVisible ? 'show-notification' : '' }`}>
+          <p className="no-notification">No available notification</p>
           <Notification />
           <Notification />
           <Notification />
-        </div>
+        </div> */}
       </div>
     </nav>
   )
